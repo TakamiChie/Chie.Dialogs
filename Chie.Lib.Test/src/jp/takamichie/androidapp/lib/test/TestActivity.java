@@ -22,6 +22,11 @@ public class TestActivity extends FragmentActivity implements DialogCallback {
 		this);
     }
 
+    public void simpleAlertDialog(View v) {
+	Dialogs.showSimpleDialog(getSupportFragmentManager(), "タイトル", "メッセージ",
+		this);
+    }
+
     public void normalChoiceDialog(View v) {
 	Dialogs.showChoiceDialog(getSupportFragmentManager(), "タイトル", this,
 		"候補1", "候補2", "候補3");

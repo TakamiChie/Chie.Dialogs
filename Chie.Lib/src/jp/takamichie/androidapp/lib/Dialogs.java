@@ -125,6 +125,27 @@ public class Dialogs {
     }
 
     /**
+     * ボタンがOKのみのシンプルなアラートダイアログを表示します
+     *
+     * @param manager
+     *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showSimpleDialog(FragmentManager manager, String title,
+	    String message, DialogCallback callback) {
+	Bundle args = new Bundle();
+	args.putString(ALERT_TITLE, title);
+	args.putString(ALERT_MESSAGE, message);
+	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE);
+	showAlertDialog(manager, args, callback, null);
+    }
+
+    /**
      * 標準的なアラートダイアログを表示します
      *
      * @param manager
@@ -185,6 +206,27 @@ public class Dialogs {
 	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	showAlertDialog(transaction, args, callback, null);
     }
+    /**
+     * ボタンがOKのみのシンプルなアラートダイアログを表示します
+     *
+     * @param transaction
+     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showSimpleDialog(FragmentTransaction transaction,
+	    String title, String message, DialogCallback callback) {
+	Bundle args = new Bundle();
+	args.putString(ALERT_TITLE, title);
+	args.putString(ALERT_MESSAGE, message);
+	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE);
+	showAlertDialog(transaction, args, callback, null);
+    }
+
 
     /**
      * 標準的な多肢選択式ダイアログを表示します
