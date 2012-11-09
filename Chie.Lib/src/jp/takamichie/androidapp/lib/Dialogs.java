@@ -31,7 +31,8 @@ public class Dialogs {
     /**
      * ダイアログに肯定ボタンと否定ボタンを表示します
      */
-    private static int DIALOGBUTTON_POSITIVE_NEGATIVE = DIALOGBUTTON_POSITIVE + DIALOGBUTTON_NEGATIVE;
+    private static int DIALOGBUTTON_POSITIVE_NEGATIVE = DIALOGBUTTON_POSITIVE
+	    + DIALOGBUTTON_NEGATIVE;
 
     /**
      * ダイアログがキャンセルされた際、{@link #PARAMS_PRESSBUTTON}に格納される値です。
@@ -182,8 +183,10 @@ public class Dialogs {
      */
     public static void showAlertDialog(FragmentManager manager, Bundle params,
 	    DialogCallback callback, View v) {
-	FragmentTransaction transaction = manager.beginTransaction();
-	showAlertDialog(transaction, params, callback, v);
+	DialogKicker kick = new DialogKicker(params, callback);
+	kick.setManager(manager);
+	kick.setView(v);
+	kick.showDialog();
     }
 
     /**
@@ -200,7 +203,9 @@ public class Dialogs {
      */
     public static void showAlertDialog(FragmentTransaction transaction,
 	    Bundle params, DialogCallback callback, View v) {
-	DialogKicker kick = new DialogKicker(transaction, params, callback, v);
+	DialogKicker kick = new DialogKicker(params, callback);
+	kick.setTransaction(transaction);
+	kick.setView(v);
 	kick.showDialog();
     }
 
@@ -209,15 +214,25 @@ public class Dialogs {
 	View mView;
 	DialogCallback mCallback;
 	Bundle mParams;
+	FragmentManager mManager;
 	FragmentTransaction mTransaction;
 	DialogFragment mDialog;
 
-	public DialogKicker(FragmentTransaction transaction, Bundle params,
-		DialogCallback callback, View view) {
+	public DialogKicker(Bundle params, DialogCallback callback) {
 	    super();
-	    this.mView = view;
 	    this.mCallback = callback;
 	    this.mParams = params;
+	}
+
+	public void setView(View view) {
+	    this.mView = view;
+	}
+
+	public void setManager(FragmentManager manager) {
+	    this.mManager = manager;
+	}
+
+	public void setTransaction(FragmentTransaction transaction) {
 	    this.mTransaction = transaction;
 	}
 
@@ -268,7 +283,14 @@ public class Dialogs {
 		}
 	    };
 	    mDialog.setArguments(mParams);
-	    mDialog.show(mTransaction, "");
+	    if (mManager != null) {
+		mDialog.show(mManager, "");
+	    } else if (mTransaction != null) {
+		mDialog.show(mTransaction, "");
+	    } else {
+		throw new IllegalStateException(
+			"Manager and transaction are both null");
+	    }
 	}
 
 	@Override
