@@ -146,6 +146,26 @@ public class Dialogs {
     }
 
     /**
+     * 標準的な多肢選択式ダイアログを表示します
+     *
+     * @param manager
+     *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     * @param choices
+     *            ダイアログに表示される選択肢
+     */
+    public static void showChoiceDialog(FragmentManager manager, String title,
+	    DialogCallback callback, String... choices) {
+	Bundle args = new Bundle();
+	args.putString(ALERT_TITLE, title);
+	args.putStringArray(ALERT_MESSAGEARRAY, choices);
+	showAlertDialog(manager, args, callback, null);
+    }
+
+    /**
      * 標準的なアラートダイアログを表示します
      *
      * @param transaction
@@ -166,6 +186,26 @@ public class Dialogs {
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
 	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	showAlertDialog(transaction, args, callback, null);
+    }
+
+    /**
+     * 標準的な多肢選択式ダイアログを表示します
+     *
+     * @param transaction
+     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     * @param choices
+     *            ダイアログに表示される選択肢
+     */
+    public static void showChoiceDialog(FragmentTransaction transaction,
+	    String title, DialogCallback callback, String... choices) {
+	Bundle args = new Bundle();
+	args.putString(ALERT_TITLE, title);
+	args.putStringArray(ALERT_MESSAGEARRAY, choices);
 	showAlertDialog(transaction, args, callback, null);
     }
 
@@ -249,7 +289,7 @@ public class Dialogs {
 		    if (args.containsKey(ALERT_MESSAGE)) {
 			dialog.setMessage(args.getString(ALERT_MESSAGE));
 		    } else if (args.containsKey(ALERT_MESSAGEARRAY)) {
-			dialog.setItems(args.getStringArray(ALERT_MESSAGE),
+			dialog.setItems(args.getStringArray(ALERT_MESSAGEARRAY),
 				DialogKicker.this);
 		    } else if (mView != null) {
 			dialog.setView(mView);
