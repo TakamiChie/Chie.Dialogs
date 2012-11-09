@@ -42,7 +42,7 @@ public class TestActivity extends FragmentActivity implements DialogCallback {
 	    case DialogInterface.BUTTON_NEUTRAL:
 		builder.append("中立ボタンで閉じられました。\n");
 		break;
-	    case 0x10:
+	    case Dialogs.CANCEL:
 		builder.append("キャンセルされました。\n");
 		break;
 	    default:

@@ -19,43 +19,43 @@ public class Dialogs {
     /**
      * ダイアログに肯定ボタンを表示します
      */
-    public static int DIALOGBUTTON_POSITIVE = 1;
+    public static final int DIALOGBUTTON_POSITIVE = 1;
     /**
      * ダイアログに否定ボタンを表示します
      */
-    public static int DIALOGBUTTON_NEGATIVE = 2;
+    public static final int DIALOGBUTTON_NEGATIVE = 2;
     /**
      * ダイアログに中立ボタンを表示します
      */
-    public static int DIALOGBUTTON_NEUTRAL = 4;
+    public static final int DIALOGBUTTON_NEUTRAL = 4;
     /**
      * ダイアログに肯定ボタンと否定ボタンを表示します
      */
-    private static int DIALOGBUTTON_POSITIVE_NEGATIVE = DIALOGBUTTON_POSITIVE
+    private static final int DIALOGBUTTON_POSITIVE_NEGATIVE = DIALOGBUTTON_POSITIVE
 	    + DIALOGBUTTON_NEGATIVE;
 
     /**
      * ダイアログがキャンセルされた際、{@link #PARAMS_PRESSBUTTON}に格納される値です。
      */
-    public static int CANCEL = 0x10;
+    public static final int CANCEL = 0x10;
 
     /**
      * ダイアログに表示するタイトル文字列を指定します(String)。
      */
-    public static String ALERT_TITLE = "title";
+    public static final String ALERT_TITLE = "title";
 
     /**
      * ダイアログに表示するメッセージ文字列を指定します(String)。
      * この値を指定すると、ダイアログは単一のメッセージを表示するダイアログとなります。 任意のビューを表示させたいときは値を指定しないでください。
      */
-    public static String ALERT_MESSAGE = "messagestr";
+    public static final String ALERT_MESSAGE = "messagestr";
 
     /**
      * ダイアログに表示するメッセージ配列を指定します(String[])。
      * この値を指定するとダイアログは複数項目からどれか一つを選ぶ形式のダイアログを表示します。
      * 任意のビューを表示させたいときは値を指定しないでください。
      */
-    public static String ALERT_MESSAGEARRAY = "messagearray";
+    public static final String ALERT_MESSAGEARRAY = "messagearray";
 
     /**
      * ダイアログに表示するボタンを示す定数を指定します(int)。次のパラメータの和を指定します。
@@ -65,27 +65,27 @@ public class Dialogs {
      * <li>{@link #DIALOGBUTTON_NEUTRAL}</li>
      * </ul>
      */
-    public static String ALERT_BUTTONS = "buttons";
+    public static final String ALERT_BUTTONS = "buttons";
 
     /**
      * ダイアログに表示する肯定ボタンの表示文字列を指定します(String)。 指定しない場合は、Android標準の値となります。
      */
-    public static String ALERT_POSCAPTION = "pos-caption";
+    public static final String ALERT_POSCAPTION = "pos-caption";
 
     /**
      * ダイアログに表示する否定ボタンの表示文字列を指定します(String)。 指定しない場合は、Android標準の値となります。
      */
-    public static String ALERT_NEGCAPTION = "neg-caption";
+    public static final String ALERT_NEGCAPTION = "neg-caption";
 
     /**
      * ダイアログに表示する中立ボタンの表示文字列を指定します(String)。
      */
-    public static String ALERT_NEUCAPTION = "neu-caption";
+    public static final String ALERT_NEUCAPTION = "neu-caption";
 
     /**
      * 複数選択ダイアログの場合、そこで選択した項目の文字列が、 単一行入力ダイアログの場合、そこで入力した文字列が格納されています(String)。
      */
-    public static String PARAMS_INPUTSTR = "inputstr";
+    public static final String PARAMS_INPUTSTR = "inputstr";
 
     /**
      * ダイアログクローズ時、押下されたボタンを示します(int)。
@@ -100,7 +100,7 @@ public class Dialogs {
      * <dd>ダイアログがキャンセルされた</dd>
      * </dl>
      */
-    public static String PARAMS_PRESSBUTTON = "pressbutton";
+    public static final String PARAMS_PRESSBUTTON = "pressbutton";
 
     /**
      * ダイアログ処理のコールバックインターフェースです
@@ -136,7 +136,7 @@ public class Dialogs {
      * @param callback
      *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
      */
-    public static void showAlertDialog(FragmentManager manager, String title,
+    public static final void showAlertDialog(FragmentManager manager, String title,
 	    String message, DialogCallback callback) {
 	Bundle args = new Bundle();
 	args.putString(ALERT_TITLE, title);
@@ -157,7 +157,7 @@ public class Dialogs {
      * @param choices
      *            ダイアログに表示される選択肢
      */
-    public static void showChoiceDialog(FragmentManager manager, String title,
+    public static final void showChoiceDialog(FragmentManager manager, String title,
 	    DialogCallback callback, String... choices) {
 	Bundle args = new Bundle();
 	args.putString(ALERT_TITLE, title);
@@ -177,7 +177,7 @@ public class Dialogs {
      * @param callback
      *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
      */
-    public static void showAlertDialog(FragmentTransaction transaction,
+    public static final void showAlertDialog(FragmentTransaction transaction,
 	    String title, String message, DialogCallback callback) {
 	Bundle args = new Bundle();
 	args.putString(ALERT_TITLE, title);
@@ -198,7 +198,7 @@ public class Dialogs {
      * @param choices
      *            ダイアログに表示される選択肢
      */
-    public static void showChoiceDialog(FragmentTransaction transaction,
+    public static final void showChoiceDialog(FragmentTransaction transaction,
 	    String title, DialogCallback callback, String... choices) {
 	Bundle args = new Bundle();
 	args.putString(ALERT_TITLE, title);
@@ -218,7 +218,7 @@ public class Dialogs {
      * @param v
      *            ダイアログに表示されるビューを指定します。
      */
-    public static void showAlertDialog(FragmentManager manager, Bundle params,
+    public static final void showAlertDialog(FragmentManager manager, Bundle params,
 	    DialogCallback callback, View v) {
 	DialogKicker kick = new DialogKicker(params, callback);
 	kick.setManager(manager);
@@ -238,7 +238,7 @@ public class Dialogs {
      * @param v
      *            ダイアログに表示されるビューを指定します。
      */
-    public static void showAlertDialog(FragmentTransaction transaction,
+    public static final void showAlertDialog(FragmentTransaction transaction,
 	    Bundle params, DialogCallback callback, View v) {
 	DialogKicker kick = new DialogKicker(params, callback);
 	kick.setTransaction(transaction);
