@@ -54,6 +54,6 @@ public class TestActivity extends FragmentActivity implements DialogCallback {
 		    + params.getString(Dialogs.PARAMS_INPUTSTR) + "\n");
 	}
 
-	Toast.makeText(this, builder.toString(), Toast.LENGTH_LONG).show();
+	Toast.makeText(this, builder.substring(0, builder.length() - 1), Toast.LENGTH_LONG).show();
     }
 }
