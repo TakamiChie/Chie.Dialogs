@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class TestActivity extends FragmentActivity implements DialogCallback {
@@ -35,6 +36,18 @@ public class TestActivity extends FragmentActivity implements DialogCallback {
     public void normalInputDialog(View v) {
 	Dialogs.showInputDialog(getSupportFragmentManager(), "タイトル", "メッセージ",
 		this);
+    }
+
+    public void showCustomDialog(View v){
+	View view = getLayoutInflater().inflate(R.layout.testview, null);
+	Button button = (Button) view.findViewById(R.id.button);
+	button.setOnClickListener(new View.OnClickListener() {
+	    @Override
+	    public void onClick(View v) {
+		Toast.makeText(TestActivity.this, "ボタンがクリックされました", Toast.LENGTH_SHORT).show();
+	    }
+	});
+	Dialogs.showCustomDialog(getSupportFragmentManager(), "タイトル", view, this);
     }
 
     @Override

@@ -25,17 +25,18 @@ public final class InternalDialogFragment extends DialogFragment implements
 	// タイトル設定
 	dialog.setTitle(args.getString(Dialogs.ALERT_TITLE));
 	// メッセージ設定
-	if(args.containsKey(Dialogs.ALERT_VIEWID)){
+	if (args.containsKey(Dialogs.ALERT_VIEWID)) {
 	    int viewId = args.getInt(Dialogs.ALERT_VIEWID);
 	    dialog.setMessage(args.getString(Dialogs.ALERT_MESSAGE));
 	    View v = getActivity().getLayoutInflater().inflate(viewId, null);
 	    dialog.setView(v);
-	}else if (args.containsKey(Dialogs.ALERT_MESSAGE)) {
+	} else if (args.containsKey(Dialogs.ALERT_MESSAGE)) {
 	    dialog.setMessage(args.getString(Dialogs.ALERT_MESSAGE));
 	} else if (args.containsKey(Dialogs.ALERT_MESSAGEARRAY)) {
 	    dialog.setItems(args.getStringArray(Dialogs.ALERT_MESSAGEARRAY),
 		    this);
-	} else if (appendView != null) {
+	}
+	if (appendView != null) {
 	    dialog.setView(appendView);
 	}
 	// ボタン設定
@@ -77,14 +78,15 @@ public final class InternalDialogFragment extends DialogFragment implements
 	    break;
 	default:
 	    // それ以外の項目
-	    String[] candidate = args.getStringArray(
-		    Dialogs.ALERT_MESSAGEARRAY);
+	    String[] candidate = args
+		    .getStringArray(Dialogs.ALERT_MESSAGEARRAY);
 	    params.putString(Dialogs.PARAMS_INPUTSTR, candidate[which]);
 	    break;
 	}
 	// 入力の取得
-	if(getDialog().findViewById(android.R.id.input) instanceof EditText){
-	    EditText ed = (EditText) getDialog().findViewById(android.R.id.input);
+	if (getDialog().findViewById(android.R.id.input) instanceof EditText) {
+	    EditText ed = (EditText) getDialog().findViewById(
+		    android.R.id.input);
 	    params.putString(Dialogs.PARAMS_INPUTSTR, ed.getText().toString());
 	}
 	Dialogs.DialogCallback callback = Dialogs.dialogData.get(getTag()).callback;

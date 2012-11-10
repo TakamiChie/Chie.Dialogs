@@ -5,31 +5,38 @@
 	android:orientation="vertical" >
 
 	<Button
-		android:id="@+id/button1"
+		android:id="@+id/button"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:onClick="simpleAlertDialog"
 		android:text="シンプルダイアログ" />
 
 	<Button
-		android:id="@+id/button1"
+		android:id="@+id/button"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:onClick="normalAlertDialog"
 		android:text="通常のアラートダイアログ" />
 
 	<Button
-		android:id="@+id/button2"
+		android:id="@+id/button"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:onClick="normalChoiceDialog"
 		android:text="通常の多肢選択式ダイアログ" />
 
 	<Button
-		android:id="@+id/button2"
+		android:id="@+id/button"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:onClick="normalInputDialog"
 		android:text="通常の入力式ダイアログ" />
+
+	<Button
+		android:id="@+id/button"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:onClick="showCustomDialog"
+		android:text="カスタムダイアログ" />
 
 </LinearLayout>

@@ -83,8 +83,7 @@ public class Dialogs {
     public static final String ALERT_NEUCAPTION = "neu-caption";
 
     /**
-     * アラートダイアログに指定するビューのIDです(int)。
-     * 現時点では内部的にのみ利用されます。
+     * アラートダイアログに指定するビューのIDです(int)。 現時点では内部的にのみ利用されます。
      */
     static final String ALERT_VIEWID = "viewid";
 
@@ -165,16 +164,58 @@ public class Dialogs {
      *            タイトルとして表示する文字列
      * @param message
      *            メッセージとして表示する文字列を指定します。
+     * @param params
+     *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showSimpleDialog(FragmentManager manager,
+	    String title, String message, Bundle params, DialogCallback callback) {
+	Bundle args = params != null ? new Bundle(params) : new Bundle();
+	args.putString(ALERT_TITLE, title);
+	args.putString(ALERT_MESSAGE, message);
+	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE);
+	showDialog(manager, args, callback, null);
+    }
+
+    /**
+     * ボタンがOKのみのシンプルなアラートダイアログを表示します。
+     *
+     * @param manager
+     *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
      * @param callback
      *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
      */
     public static final void showSimpleDialog(FragmentManager manager,
 	    String title, String message, DialogCallback callback) {
-	Bundle args = new Bundle();
+	showSimpleDialog(manager, title, message, null, callback);
+    }
+
+    /**
+     * 標準的なアラートダイアログを表示します。
+     *
+     * @param manager
+     *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param params
+     *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showAlertDialog(FragmentManager manager,
+	    String title, String message, Bundle params, DialogCallback callback) {
+	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE);
-	showAlertDialog(manager, args, callback, null);
+	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	showDialog(manager, args, callback, null);
     }
 
     /**
@@ -191,11 +232,30 @@ public class Dialogs {
      */
     public static final void showAlertDialog(FragmentManager manager,
 	    String title, String message, DialogCallback callback) {
-	Bundle args = new Bundle();
+	showAlertDialog(manager, title, message, null, callback);
+    }
+
+    /**
+     * 標準的な多肢選択式ダイアログを表示します。
+     *
+     * @param manager
+     *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param params
+     *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     * @param choices
+     *            ダイアログに表示される選択肢
+     */
+    public static final void showChoiceDialog(FragmentManager manager,
+	    String title, Bundle params, DialogCallback callback,
+	    String... choices) {
+	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
-	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
-	showAlertDialog(manager, args, callback, null);
+	args.putStringArray(ALERT_MESSAGEARRAY, choices);
+	showDialog(manager, args, callback, null);
     }
 
     /**
@@ -212,10 +272,32 @@ public class Dialogs {
      */
     public static final void showChoiceDialog(FragmentManager manager,
 	    String title, DialogCallback callback, String... choices) {
-	Bundle args = new Bundle();
+	showChoiceDialog(manager, title, null, callback, choices);
+    }
+
+    /**
+     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     *
+     * @param manager
+     *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param params
+     *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showInputDialog(FragmentManager manager,
+	    String title, String message, Bundle params, DialogCallback callback) {
+	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
-	args.putStringArray(ALERT_MESSAGEARRAY, choices);
-	showAlertDialog(manager, args, callback, null);
+	args.putString(ALERT_MESSAGE, message);
+	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
+	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	showDialog(manager, args, callback, null);
     }
 
     /**
@@ -233,15 +315,72 @@ public class Dialogs {
      */
     public static final void showInputDialog(FragmentManager manager,
 	    String title, String message, DialogCallback callback) {
-	Bundle args = new Bundle();
+	showInputDialog(manager, title, message, null, callback);
+    }
+
+    /**
+     * 独自ビューを表示するダイアログを表示します。
+     *
+     * @param manager
+     *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param view
+     *            表示するビューオブジェクトを指定します。
+     * @param params
+     *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showCustomDialog(FragmentManager manager,
+	    String title, View view, Bundle params, DialogCallback callback) {
+	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
-	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
 	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
-	showAlertDialog(manager, args, callback, null);
+	showDialog(manager, args, callback, view);
+    }
+
+    /**
+     * 独自ビューを表示するダイアログを表示します。
+     *
+     * @param manager
+     *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param view
+     *            表示するビューオブジェクトを指定します。
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showCustomDialog(FragmentManager manager,
+	    String title, View view, DialogCallback callback) {
+	showCustomDialog(manager, title, view, null, callback);
     }
 
     // FragmentTransactionを使うオーバーライド
+
+    /**
+     * ボタンがOKのみのシンプルなアラートダイアログを表示します。
+     *
+     * @param transaction
+     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param params
+     *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showSimpleDialog(FragmentTransaction transaction,
+	    String title, String message, Bundle params, DialogCallback callback) {
+	Bundle args = params != null ? new Bundle(params) : new Bundle();
+	args.putString(ALERT_TITLE, title);
+	args.putString(ALERT_MESSAGE, message);
+	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE);
+	showDialog(transaction, args, callback, null);
+    }
 
     /**
      * ボタンがOKのみのシンプルなアラートダイアログを表示します。
@@ -257,11 +396,30 @@ public class Dialogs {
      */
     public static final void showSimpleDialog(FragmentTransaction transaction,
 	    String title, String message, DialogCallback callback) {
-	Bundle args = new Bundle();
+	showSimpleDialog(transaction, title, message, null, callback);
+    }
+
+    /**
+     * 標準的なアラートダイアログを表示します。
+     *
+     * @param transaction
+     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param params
+     *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showAlertDialog(FragmentTransaction transaction,
+	    String title, String message, Bundle params, DialogCallback callback) {
+	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE);
-	showAlertDialog(transaction, args, callback, null);
+	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	showDialog(transaction, args, callback, null);
     }
 
     /**
@@ -278,11 +436,30 @@ public class Dialogs {
      */
     public static final void showAlertDialog(FragmentTransaction transaction,
 	    String title, String message, DialogCallback callback) {
-	Bundle args = new Bundle();
+	showAlertDialog(transaction, title, message, null, callback);
+    }
+
+    /**
+     * 標準的な多肢選択式ダイアログを表示します。
+     *
+     * @param transaction
+     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param params
+     *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     * @param choices
+     *            ダイアログに表示される選択肢
+     */
+    public static final void showChoiceDialog(FragmentTransaction transaction,
+	    String title, Bundle params, DialogCallback callback,
+	    String... choices) {
+	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
-	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
-	showAlertDialog(transaction, args, callback, null);
+	args.putStringArray(ALERT_MESSAGEARRAY, choices);
+	showDialog(transaction, args, callback, null);
     }
 
     /**
@@ -299,10 +476,32 @@ public class Dialogs {
      */
     public static final void showChoiceDialog(FragmentTransaction transaction,
 	    String title, DialogCallback callback, String... choices) {
-	Bundle args = new Bundle();
+	showChoiceDialog(transaction, title, null, callback, choices);
+    }
+
+    /**
+     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     *
+     * @param transaction
+     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param params
+     *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showInputDialog(FragmentTransaction transaction,
+	    String title, String message, Bundle params, DialogCallback callback) {
+	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
-	args.putStringArray(ALERT_MESSAGEARRAY, choices);
-	showAlertDialog(transaction, args, callback, null);
+	args.putString(ALERT_MESSAGE, message);
+	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
+	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	showDialog(transaction, args, callback, null);
     }
 
     /**
@@ -318,16 +517,49 @@ public class Dialogs {
      * @param callback
      *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
      */
-    public static final void showChoiceDialog(FragmentTransaction transaction,
+    public static final void showInputDialog(FragmentTransaction transaction,
 	    String title, String message, DialogCallback callback) {
-	Bundle args = new Bundle();
-	args.putString(ALERT_TITLE, title);
-	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
-	showAlertDialog(transaction, args, callback, null);
+	showInputDialog(transaction, title, message, null, callback);
     }
 
+    /**
+     * 独自ビューを表示するダイアログを表示します。
+     *
+     * @param transaction
+     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param view
+     *            表示するビューオブジェクトを指定します。
+     * @param params
+     *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showCustomDialog(FragmentTransaction transaction,
+	    String title, View view, Bundle params, DialogCallback callback) {
+	Bundle args = params != null ? new Bundle(params) : new Bundle();
+	args.putString(ALERT_TITLE, title);
+	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	showDialog(transaction, args, callback, null);
+    }
+
+    /**
+     * 独自ビューを表示するダイアログを表示します。
+     *
+     * @param transaction
+     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param view
+     *            表示するビューオブジェクトを指定します。
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showCustomDialog(FragmentTransaction transaction,
+	    String title, View view, DialogCallback callback) {
+	showCustomDialog(transaction, title, view, null, callback);
+    }
 
     // 最終的に呼び出されるメソッド
 
@@ -343,7 +575,7 @@ public class Dialogs {
      * @param v
      *            ダイアログに表示されるビューを指定します。
      */
-    public static final void showAlertDialog(FragmentManager manager,
+    public static final void showDialog(FragmentManager manager,
 	    Bundle params, DialogCallback callback, View v) {
 	String tagStr = String.valueOf(tag++);
 
@@ -367,7 +599,7 @@ public class Dialogs {
      * @param v
      *            ダイアログに表示されるビューを指定します。
      */
-    public static final void showAlertDialog(FragmentTransaction transaction,
+    public static final void showDialog(FragmentTransaction transaction,
 	    Bundle params, DialogCallback callback, View v) {
 	String tagStr = String.valueOf(tag++);
 
