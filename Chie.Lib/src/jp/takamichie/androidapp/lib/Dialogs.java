@@ -1,7 +1,7 @@
 package jp.takamichie.androidapp.lib;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
+import java.util.HashMap;
+
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -120,6 +120,30 @@ public class Dialogs {
 	 */
 	void onDialogClosed(DialogFragment owner, Bundle params);
     }
+
+    /**
+     * 内部的に用いるデータを格納する構造体です。
+     */
+    public static class DialogData {
+	View view;
+	DialogCallback callback;
+
+	public DialogData(View view, DialogCallback callback) {
+	    super();
+	    this.view = view;
+	    this.callback = callback;
+	}
+    }
+
+    /**
+     * 内部的に用いるダイアログ用データを保存するオブジェクトです。
+     */
+    static HashMap<String, DialogData> dialogData = new HashMap<String, Dialogs.DialogData>();
+
+    /**
+     * 内部的に用いるタグ番号です。
+     */
+    private static int tag = 0;
 
     private Dialogs() {
     }
@@ -268,10 +292,14 @@ public class Dialogs {
      */
     public static final void showAlertDialog(FragmentManager manager,
 	    Bundle params, DialogCallback callback, View v) {
-	DialogKicker kick = new DialogKicker(params, callback);
-	kick.setManager(manager);
-	kick.setView(v);
-	kick.showDialog();
+	String tagStr = String.valueOf(tag++);
+
+	// staticなメモリにデータを保存
+	dialogData.put(tagStr, new DialogData(v, callback));
+	// 表示
+	InternalDialogFragment dialog = new InternalDialogFragment();
+	dialog.setArguments(params);
+	dialog.show(manager, String.valueOf(tagStr));
     }
 
     /**
@@ -288,159 +316,14 @@ public class Dialogs {
      */
     public static final void showAlertDialog(FragmentTransaction transaction,
 	    Bundle params, DialogCallback callback, View v) {
-	DialogKicker kick = new DialogKicker(params, callback);
-	kick.setTransaction(transaction);
-	kick.setView(v);
-	kick.showDialog();
+	String tagStr = String.valueOf(tag++);
+
+	// staticなメモリにデータを保存
+	dialogData.put(tagStr, new DialogData(v, callback));
+	// 表示
+	InternalDialogFragment dialog = new InternalDialogFragment();
+	dialog.setArguments(params);
+	dialog.show(transaction, String.valueOf(tagStr));
     }
 
-    /**
-     * ダイアログを表示するため内部的に利用されるクラスです。
-     */
-    private static class DialogKicker implements
-	    DialogInterface.OnClickListener, DialogInterface.OnCancelListener {
-	View mView;
-	DialogCallback mCallback;
-	Bundle mParams;
-	FragmentManager mManager;
-	FragmentTransaction mTransaction;
-	DialogFragment mDialog;
-
-	/**
-	 * コンストラクタ
-	 *
-	 * @param params
-	 *            パラメータ
-	 * @param callback
-	 *            コールバック
-	 */
-	public DialogKicker(Bundle params, DialogCallback callback) {
-	    super();
-	    this.mCallback = callback;
-	    this.mParams = params;
-	}
-
-	/**
-	 * ビューを設定します。
-	 *
-	 * @param view
-	 *            ビューオブジェクト
-	 */
-	public void setView(View view) {
-	    this.mView = view;
-	}
-
-	/**
-	 * Fragmentのマネージャオブジェクト。これを指定しなかった場合
-	 * {@link #setTransaction(FragmentTransaction)}
-	 * で指定したトランザクションオブジェクトが使用されます。
-	 *
-	 * @param manager
-	 *            マネージャオブジェクト
-	 */
-	public void setManager(FragmentManager manager) {
-	    this.mManager = manager;
-	}
-
-	/**
-	 * Fragmentのトランザクションオブジェクト。{@link #setManager(FragmentManager)}
-	 * でオブジェクトを指定せず、 この値も指定しなかった場合、ダイアログを表示することは出来ません。
-	 *
-	 * @param transaction
-	 *            トランザクションオブジェクト
-	 */
-	public void setTransaction(FragmentTransaction transaction) {
-	    this.mTransaction = transaction;
-	}
-
-	/**
-	 * ダイアログを表示します。
-	 */
-	public void showDialog() {
-	    mDialog = new DialogFragment() {
-		@Override
-		public Dialog onCreateDialog(Bundle savedInstanceState) {
-		    Bundle args = getArguments();
-		    AlertDialog.Builder dialog = new AlertDialog.Builder(
-			    getActivity());
-		    // タイトル設定
-		    dialog.setTitle(args.getString(ALERT_TITLE));
-		    // メッセージ設定
-		    if (args.containsKey(ALERT_MESSAGE)) {
-			dialog.setMessage(args.getString(ALERT_MESSAGE));
-		    } else if (args.containsKey(ALERT_MESSAGEARRAY)) {
-			dialog.setItems(
-				args.getStringArray(ALERT_MESSAGEARRAY),
-				DialogKicker.this);
-		    } else if (mView != null) {
-			dialog.setView(mView);
-		    }
-		    // ボタン設定
-		    int buttons = args.getInt(ALERT_BUTTONS);
-		    if ((buttons & DIALOGBUTTON_POSITIVE) != 0) {
-			dialog.setPositiveButton(
-				args.containsKey(ALERT_POSCAPTION) ? args
-					.getString(ALERT_POSCAPTION)
-					: getActivity().getString(
-						android.R.string.ok),
-				DialogKicker.this);
-		    }
-		    if ((buttons & DIALOGBUTTON_NEGATIVE) != 0) {
-			dialog.setNegativeButton(
-				args.containsKey(ALERT_NEGCAPTION) ? args
-					.getString(ALERT_NEGCAPTION)
-					: getActivity().getString(
-						android.R.string.no),
-				DialogKicker.this);
-		    }
-		    if ((buttons & DIALOGBUTTON_NEUTRAL) != 0) {
-			dialog.setNegativeButton(
-				args.getString(ALERT_NEUCAPTION),
-				DialogKicker.this);
-		    }
-		    dialog.setOnCancelListener(DialogKicker.this);
-
-		    return dialog.create();
-		}
-	    };
-	    mDialog.setArguments(mParams);
-	    // 表示
-	    if (mManager != null) {
-		mDialog.show(mManager, "");
-	    } else if (mTransaction != null) {
-		mDialog.show(mTransaction, "");
-	    } else {
-		throw new IllegalStateException(
-			"Manager and transaction are both null");
-	    }
-	}
-
-	@Override
-	public void onClick(DialogInterface dialog, int which) {
-	    Bundle args = new Bundle();
-	    switch (which) {
-	    case DialogInterface.BUTTON_POSITIVE:
-	    case DialogInterface.BUTTON_NEGATIVE:
-	    case DialogInterface.BUTTON_NEUTRAL:
-		// 肯定・否定・中立のボタンが押された
-		args.putInt(PARAMS_PRESSBUTTON, which);
-		break;
-	    default:
-		// それ以外の項目
-		String[] candidate = mParams.getStringArray(ALERT_MESSAGEARRAY);
-		args.putString(PARAMS_INPUTSTR, candidate[which]);
-		break;
-	    }
-	    mCallback.onDialogClosed(mDialog, args);
-	}
-
-	@Override
-	public void onCancel(DialogInterface dialog) {
-	    // キャンセルをコールバック
-	    Bundle args = new Bundle();
-	    args.putInt(PARAMS_PRESSBUTTON, Dialogs.CANCEL);
-	    mCallback.onDialogClosed(mDialog, args);
-	}
-
-    }
 }
