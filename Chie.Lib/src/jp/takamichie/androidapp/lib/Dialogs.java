@@ -83,6 +83,12 @@ public class Dialogs {
     public static final String ALERT_NEUCAPTION = "neu-caption";
 
     /**
+     * アラートダイアログに指定するビューのIDです(int)。
+     * 現時点では内部的にのみ利用されます。
+     */
+    static final String ALERT_VIEWID = "viewid";
+
+    /**
      * 複数選択ダイアログの場合、そこで選択した項目の文字列が、 単一行入力ダイアログの場合、そこで入力した文字列が格納されています(String)。
      */
     public static final String PARAMS_INPUTSTR = "inputstr";
@@ -212,6 +218,29 @@ public class Dialogs {
 	showAlertDialog(manager, args, callback, null);
     }
 
+    /**
+     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     *
+     * @param manager
+     *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showInputDialog(FragmentManager manager,
+	    String title, String message, DialogCallback callback) {
+	Bundle args = new Bundle();
+	args.putString(ALERT_TITLE, title);
+	args.putString(ALERT_MESSAGE, message);
+	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
+	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	showAlertDialog(manager, args, callback, null);
+    }
+
     // FragmentTransactionを使うオーバーライド
 
     /**
@@ -275,6 +304,30 @@ public class Dialogs {
 	args.putStringArray(ALERT_MESSAGEARRAY, choices);
 	showAlertDialog(transaction, args, callback, null);
     }
+
+    /**
+     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     *
+     * @param transaction
+     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showChoiceDialog(FragmentTransaction transaction,
+	    String title, String message, DialogCallback callback) {
+	Bundle args = new Bundle();
+	args.putString(ALERT_TITLE, title);
+	args.putString(ALERT_MESSAGE, message);
+	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
+	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	showAlertDialog(transaction, args, callback, null);
+    }
+
 
     // 最終的に呼び出されるメソッド
 

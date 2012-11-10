@@ -7,6 +7,8 @@ import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * 内部的に利用されるダイアログ表示フラグメントです。 {@link Dialogs}
@@ -24,7 +26,13 @@ public final class InternalDialogFragment extends DialogFragment implements
 	// タイトル設定
 	dialog.setTitle(args.getString(Dialogs.ALERT_TITLE));
 	// メッセージ設定
-	if (args.containsKey(Dialogs.ALERT_MESSAGE)) {
+	if(args.containsKey(Dialogs.ALERT_VIEWID)){
+	    int viewId = args.getInt(Dialogs.ALERT_VIEWID);
+	    View v = getActivity().getLayoutInflater().inflate(viewId, null);
+	    TextView tv = (TextView) v.findViewById(android.R.id.text1);
+	    tv.setText(args.getString(Dialogs.ALERT_MESSAGE));
+	    dialog.setView(v);
+	}else if (args.containsKey(Dialogs.ALERT_MESSAGE)) {
 	    dialog.setMessage(args.getString(Dialogs.ALERT_MESSAGE));
 	} else if (args.containsKey(Dialogs.ALERT_MESSAGEARRAY)) {
 	    dialog.setItems(args.getStringArray(Dialogs.ALERT_MESSAGEARRAY),
@@ -59,24 +67,31 @@ public final class InternalDialogFragment extends DialogFragment implements
 
     @Override
     public void onClick(DialogInterface dialog, int which) {
-	Bundle args = new Bundle();
+	Bundle args = getArguments();
+	Bundle params = new Bundle();
+	// ボタン処理
 	switch (which) {
 	case DialogInterface.BUTTON_POSITIVE:
 	case DialogInterface.BUTTON_NEGATIVE:
 	case DialogInterface.BUTTON_NEUTRAL:
 	    // 肯定・否定・中立のボタンが押された
-	    args.putInt(Dialogs.PARAMS_PRESSBUTTON, which);
+	    params.putInt(Dialogs.PARAMS_PRESSBUTTON, which);
 	    break;
 	default:
 	    // それ以外の項目
-	    String[] candidate = getArguments().getStringArray(
+	    String[] candidate = args.getStringArray(
 		    Dialogs.ALERT_MESSAGEARRAY);
-	    args.putString(Dialogs.PARAMS_INPUTSTR, candidate[which]);
+	    params.putString(Dialogs.PARAMS_INPUTSTR, candidate[which]);
 	    break;
+	}
+	// 入力の取得
+	if(getDialog().findViewById(android.R.id.input) instanceof EditText){
+	    EditText ed = (EditText) getDialog().findViewById(android.R.id.input);
+	    params.putString(Dialogs.PARAMS_INPUTSTR, ed.getText().toString());
 	}
 	Dialogs.DialogCallback callback = Dialogs.dialogData.get(getTag()).callback;
 	if (callback != null) {
-	    callback.onDialogClosed(this, args);
+	    callback.onDialogClosed(this, params);
 	}
     }
 
@@ -99,5 +114,5 @@ public final class InternalDialogFragment extends DialogFragment implements
 	Dialogs.dialogData.put(getTag(), null);
 	super.onDismiss(dialog);
     }
-    
+
 }

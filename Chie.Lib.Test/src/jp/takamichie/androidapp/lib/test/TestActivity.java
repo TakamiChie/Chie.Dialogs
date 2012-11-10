@@ -32,6 +32,11 @@ public class TestActivity extends FragmentActivity implements DialogCallback {
 		"候補1", "候補2", "候補3");
     }
 
+    public void normalInputDialog(View v) {
+	Dialogs.showInputDialog(getSupportFragmentManager(), "タイトル", "メッセージ",
+		this);
+    }
+
     @Override
     public void onDialogClosed(DialogFragment owner, Bundle params) {
 	StringBuilder builder = new StringBuilder();
