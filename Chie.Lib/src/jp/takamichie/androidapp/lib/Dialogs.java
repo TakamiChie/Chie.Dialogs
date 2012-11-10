@@ -17,19 +17,19 @@ import android.view.View;
 public class Dialogs {
 
     /**
-     * ダイアログに肯定ボタンを表示します
+     * ダイアログに肯定ボタンを表示します。
      */
     public static final int DIALOGBUTTON_POSITIVE = 1;
     /**
-     * ダイアログに否定ボタンを表示します
+     * ダイアログに否定ボタンを表示します。
      */
     public static final int DIALOGBUTTON_NEGATIVE = 2;
     /**
-     * ダイアログに中立ボタンを表示します
+     * ダイアログに中立ボタンを表示します。
      */
     public static final int DIALOGBUTTON_NEUTRAL = 4;
     /**
-     * ダイアログに肯定ボタンと否定ボタンを表示します
+     * ダイアログに肯定ボタンと否定ボタンを表示します。
      */
     private static final int DIALOGBUTTON_POSITIVE_NEGATIVE = DIALOGBUTTON_POSITIVE
 	    + DIALOGBUTTON_NEGATIVE;
@@ -103,11 +103,11 @@ public class Dialogs {
     public static final String PARAMS_PRESSBUTTON = "pressbutton";
 
     /**
-     * ダイアログ処理のコールバックインターフェースです
+     * ダイアログ処理のコールバックインターフェースです。
      */
     public interface DialogCallback {
 	/**
-	 * ダイアログの肯定ボタンが押されたときのコールバックメソッドです
+	 * ダイアログの肯定ボタンが押されたときのコールバックメソッドです。
 	 *
 	 * @param owner
 	 *            内部的に使用している{@link DialogFragment}オブジェクト。
@@ -124,8 +124,10 @@ public class Dialogs {
     private Dialogs() {
     }
 
+    // FragmentManagerを使うオーバーライド
+
     /**
-     * ボタンがOKのみのシンプルなアラートダイアログを表示します
+     * ボタンがOKのみのシンプルなアラートダイアログを表示します。
      *
      * @param manager
      *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
@@ -136,8 +138,8 @@ public class Dialogs {
      * @param callback
      *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
      */
-    public static final void showSimpleDialog(FragmentManager manager, String title,
-	    String message, DialogCallback callback) {
+    public static final void showSimpleDialog(FragmentManager manager,
+	    String title, String message, DialogCallback callback) {
 	Bundle args = new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
@@ -146,7 +148,7 @@ public class Dialogs {
     }
 
     /**
-     * 標準的なアラートダイアログを表示します
+     * 標準的なアラートダイアログを表示します。
      *
      * @param manager
      *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
@@ -157,8 +159,8 @@ public class Dialogs {
      * @param callback
      *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
      */
-    public static final void showAlertDialog(FragmentManager manager, String title,
-	    String message, DialogCallback callback) {
+    public static final void showAlertDialog(FragmentManager manager,
+	    String title, String message, DialogCallback callback) {
 	Bundle args = new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
@@ -167,7 +169,7 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な多肢選択式ダイアログを表示します
+     * 標準的な多肢選択式ダイアログを表示します。
      *
      * @param manager
      *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
@@ -178,36 +180,18 @@ public class Dialogs {
      * @param choices
      *            ダイアログに表示される選択肢
      */
-    public static final void showChoiceDialog(FragmentManager manager, String title,
-	    DialogCallback callback, String... choices) {
+    public static final void showChoiceDialog(FragmentManager manager,
+	    String title, DialogCallback callback, String... choices) {
 	Bundle args = new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putStringArray(ALERT_MESSAGEARRAY, choices);
 	showAlertDialog(manager, args, callback, null);
     }
 
+    // FragmentTransactionを使うオーバーライド
+
     /**
-     * 標準的なアラートダイアログを表示します
-     *
-     * @param transaction
-     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
-     * @param title
-     *            タイトルとして表示する文字列
-     * @param message
-     *            メッセージとして表示する文字列を指定します。
-     * @param callback
-     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
-     */
-    public static final void showAlertDialog(FragmentTransaction transaction,
-	    String title, String message, DialogCallback callback) {
-	Bundle args = new Bundle();
-	args.putString(ALERT_TITLE, title);
-	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
-	showAlertDialog(transaction, args, callback, null);
-    }
-    /**
-     * ボタンがOKのみのシンプルなアラートダイアログを表示します
+     * ボタンがOKのみのシンプルなアラートダイアログを表示します。
      *
      * @param transaction
      *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
@@ -227,9 +211,29 @@ public class Dialogs {
 	showAlertDialog(transaction, args, callback, null);
     }
 
+    /**
+     * 標準的なアラートダイアログを表示します。
+     *
+     * @param transaction
+     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showAlertDialog(FragmentTransaction transaction,
+	    String title, String message, DialogCallback callback) {
+	Bundle args = new Bundle();
+	args.putString(ALERT_TITLE, title);
+	args.putString(ALERT_MESSAGE, message);
+	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	showAlertDialog(transaction, args, callback, null);
+    }
 
     /**
-     * 標準的な多肢選択式ダイアログを表示します
+     * 標準的な多肢選択式ダイアログを表示します。
      *
      * @param transaction
      *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
@@ -248,8 +252,10 @@ public class Dialogs {
 	showAlertDialog(transaction, args, callback, null);
     }
 
+    // 最終的に呼び出されるメソッド
+
     /**
-     * 標準的なアラートダイアログを表示します
+     * アラートダイアログを表示します。
      *
      * @param transaction
      *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
@@ -260,8 +266,8 @@ public class Dialogs {
      * @param v
      *            ダイアログに表示されるビューを指定します。
      */
-    public static final void showAlertDialog(FragmentManager manager, Bundle params,
-	    DialogCallback callback, View v) {
+    public static final void showAlertDialog(FragmentManager manager,
+	    Bundle params, DialogCallback callback, View v) {
 	DialogKicker kick = new DialogKicker(params, callback);
 	kick.setManager(manager);
 	kick.setView(v);
@@ -269,7 +275,7 @@ public class Dialogs {
     }
 
     /**
-     * 標準的なアラートダイアログを表示します
+     * アラートダイアログを表示します。
      *
      * @param transaction
      *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
@@ -288,6 +294,9 @@ public class Dialogs {
 	kick.showDialog();
     }
 
+    /**
+     * ダイアログを表示するため内部的に利用されるクラスです。
+     */
     private static class DialogKicker implements
 	    DialogInterface.OnClickListener, DialogInterface.OnCancelListener {
 	View mView;
@@ -297,24 +306,56 @@ public class Dialogs {
 	FragmentTransaction mTransaction;
 	DialogFragment mDialog;
 
+	/**
+	 * コンストラクタ
+	 *
+	 * @param params
+	 *            パラメータ
+	 * @param callback
+	 *            コールバック
+	 */
 	public DialogKicker(Bundle params, DialogCallback callback) {
 	    super();
 	    this.mCallback = callback;
 	    this.mParams = params;
 	}
 
+	/**
+	 * ビューを設定します。
+	 *
+	 * @param view
+	 *            ビューオブジェクト
+	 */
 	public void setView(View view) {
 	    this.mView = view;
 	}
 
+	/**
+	 * Fragmentのマネージャオブジェクト。これを指定しなかった場合
+	 * {@link #setTransaction(FragmentTransaction)}
+	 * で指定したトランザクションオブジェクトが使用されます。
+	 *
+	 * @param manager
+	 *            マネージャオブジェクト
+	 */
 	public void setManager(FragmentManager manager) {
 	    this.mManager = manager;
 	}
 
+	/**
+	 * Fragmentのトランザクションオブジェクト。{@link #setManager(FragmentManager)}
+	 * でオブジェクトを指定せず、 この値も指定しなかった場合、ダイアログを表示することは出来ません。
+	 *
+	 * @param transaction
+	 *            トランザクションオブジェクト
+	 */
 	public void setTransaction(FragmentTransaction transaction) {
 	    this.mTransaction = transaction;
 	}
 
+	/**
+	 * ダイアログを表示します。
+	 */
 	public void showDialog() {
 	    mDialog = new DialogFragment() {
 		@Override
@@ -328,7 +369,8 @@ public class Dialogs {
 		    if (args.containsKey(ALERT_MESSAGE)) {
 			dialog.setMessage(args.getString(ALERT_MESSAGE));
 		    } else if (args.containsKey(ALERT_MESSAGEARRAY)) {
-			dialog.setItems(args.getStringArray(ALERT_MESSAGEARRAY),
+			dialog.setItems(
+				args.getStringArray(ALERT_MESSAGEARRAY),
 				DialogKicker.this);
 		    } else if (mView != null) {
 			dialog.setView(mView);
@@ -362,6 +404,7 @@ public class Dialogs {
 		}
 	    };
 	    mDialog.setArguments(mParams);
+	    // 表示
 	    if (mManager != null) {
 		mDialog.show(mManager, "");
 	    } else if (mTransaction != null) {
