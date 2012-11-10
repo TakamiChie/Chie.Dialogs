@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 /**
  * 内部的に利用されるダイアログ表示フラグメントです。 {@link Dialogs}
@@ -28,9 +27,8 @@ public final class InternalDialogFragment extends DialogFragment implements
 	// メッセージ設定
 	if(args.containsKey(Dialogs.ALERT_VIEWID)){
 	    int viewId = args.getInt(Dialogs.ALERT_VIEWID);
+	    dialog.setMessage(args.getString(Dialogs.ALERT_MESSAGE));
 	    View v = getActivity().getLayoutInflater().inflate(viewId, null);
-	    TextView tv = (TextView) v.findViewById(android.R.id.text1);
-	    tv.setText(args.getString(Dialogs.ALERT_MESSAGE));
 	    dialog.setView(v);
 	}else if (args.containsKey(Dialogs.ALERT_MESSAGE)) {
 	    dialog.setMessage(args.getString(Dialogs.ALERT_MESSAGE));
