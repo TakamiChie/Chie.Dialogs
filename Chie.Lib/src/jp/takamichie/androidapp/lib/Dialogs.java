@@ -174,7 +174,9 @@ public class Dialogs {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE);
+	if(args.containsKey(ALERT_BUTTONS)){
+	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE);
+	}
 	showDialog(manager, args, callback, null);
     }
 
@@ -214,7 +216,9 @@ public class Dialogs {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	if(args.containsKey(ALERT_BUTTONS)){
+	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	}
 	showDialog(manager, args, callback, null);
     }
 
@@ -296,7 +300,9 @@ public class Dialogs {
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
 	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	if(args.containsKey(ALERT_BUTTONS)){
+	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	}
 	showDialog(manager, args, callback, null);
     }
 
@@ -336,7 +342,9 @@ public class Dialogs {
 	    String title, View view, Bundle params, DialogCallback callback) {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	if(args.containsKey(ALERT_BUTTONS)){
+	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	}
 	showDialog(manager, args, callback, view);
     }
 
@@ -378,7 +386,9 @@ public class Dialogs {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE);
+	if(args.containsKey(ALERT_BUTTONS)){
+	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE);
+	}
 	showDialog(transaction, args, callback, null);
     }
 
@@ -418,7 +428,9 @@ public class Dialogs {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	if(args.containsKey(ALERT_BUTTONS)){
+	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	}
 	showDialog(transaction, args, callback, null);
     }
 
@@ -500,7 +512,9 @@ public class Dialogs {
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
 	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	if(args.containsKey(ALERT_BUTTONS)){
+	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	}
 	showDialog(transaction, args, callback, null);
     }
 
@@ -540,7 +554,9 @@ public class Dialogs {
 	    String title, View view, Bundle params, DialogCallback callback) {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
-	args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	if(args.containsKey(ALERT_BUTTONS)){
+	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	}
 	showDialog(transaction, args, callback, null);
     }
 
