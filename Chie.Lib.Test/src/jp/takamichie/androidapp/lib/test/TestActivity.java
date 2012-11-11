@@ -20,34 +20,42 @@ public class TestActivity extends FragmentActivity implements DialogCallback {
 
     public void normalAlertDialog(View v) {
 	Dialogs.showAlertDialog(getSupportFragmentManager(), "タイトル", "メッセージ",
-		this);
+		getParam(1), this);
     }
 
     public void simpleAlertDialog(View v) {
 	Dialogs.showSimpleDialog(getSupportFragmentManager(), "タイトル", "メッセージ",
-		this);
+		getParam(2), this);
     }
 
     public void normalChoiceDialog(View v) {
-	Dialogs.showChoiceDialog(getSupportFragmentManager(), "タイトル", this,
-		"候補1", "候補2", "候補3");
+	Dialogs.showChoiceDialog(getSupportFragmentManager(), "タイトル",
+		getParam(3), this, "候補1", "候補2", "候補3");
     }
 
     public void normalInputDialog(View v) {
 	Dialogs.showInputDialog(getSupportFragmentManager(), "タイトル", "メッセージ",
-		this);
+		getParam(4), this);
     }
 
-    public void showCustomDialog(View v){
+    public void showCustomDialog(View v) {
 	View view = getLayoutInflater().inflate(R.layout.testview, null);
 	Button button = (Button) view.findViewById(R.id.button);
 	button.setOnClickListener(new View.OnClickListener() {
 	    @Override
 	    public void onClick(View v) {
-		Toast.makeText(TestActivity.this, "ボタンがクリックされました", Toast.LENGTH_SHORT).show();
+		Toast.makeText(TestActivity.this, "ボタンがクリックされました",
+			Toast.LENGTH_SHORT).show();
 	    }
 	});
-	Dialogs.showCustomDialog(getSupportFragmentManager(), "タイトル", view, this);
+	Dialogs.showCustomDialog(getSupportFragmentManager(), "タイトル", view,
+		getParam(5), this);
+    }
+
+    private Bundle getParam(int i) {
+	Bundle params = new Bundle();
+	params.putInt(Dialogs.ALERT_ID, i);
+	return params;
     }
 
     @Override
@@ -76,7 +84,9 @@ public class TestActivity extends FragmentActivity implements DialogCallback {
 	    builder.append("入力/選択文字列:"
 		    + params.getString(Dialogs.PARAMS_INPUTSTR) + "\n");
 	}
+	builder.append(String.format("ダイアログID：%d\n", params.getInt(Dialogs.PARAMS_ID)));
 
-	Toast.makeText(this, builder.substring(0, builder.length() - 1), Toast.LENGTH_LONG).show();
+	Toast.makeText(this, builder.substring(0, builder.length() - 1),
+		Toast.LENGTH_LONG).show();
     }
 }
