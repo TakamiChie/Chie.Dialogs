@@ -7,6 +7,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 /**
@@ -29,6 +30,12 @@ public final class InternalDialogFragment extends DialogFragment implements
 	    int viewId = args.getInt(Dialogs.ALERT_VIEWID);
 	    dialog.setMessage(args.getString(Dialogs.ALERT_MESSAGE));
 	    View v = getActivity().getLayoutInflater().inflate(viewId, null);
+	    // ビューごとの個別処理
+	    if(viewId == R.layout.checkdialog){
+		// チェックボックスの文字列指定
+		CheckBox checkbox = (CheckBox) v.findViewById(android.R.id.checkbox);
+		checkbox.setText(args.getString(Dialogs.ALERT_APPENDMESSAGE));
+	    }
 	    dialog.setView(v);
 	} else if (args.containsKey(Dialogs.ALERT_MESSAGE)) {
 	    dialog.setMessage(args.getString(Dialogs.ALERT_MESSAGE));
@@ -89,6 +96,12 @@ public final class InternalDialogFragment extends DialogFragment implements
 		    android.R.id.input);
 	    params.putString(Dialogs.PARAMS_INPUTSTR, ed.getText().toString());
 	}
+	if (getDialog().findViewById(android.R.id.checkbox) instanceof CheckBox) {
+	    CheckBox checkbox = (CheckBox) getDialog().findViewById(
+		    android.R.id.checkbox);
+	    params.putBoolean(Dialogs.PARAMS_CHECKED, checkbox.isChecked());
+	}
+	// IDの設定
 	params.putInt(Dialogs.PARAMS_ID, args.getInt(Dialogs.ALERT_ID));
 	Dialogs.DialogCallback callback = Dialogs.dialogData.get(getTag()).callback;
 	if (callback != null) {

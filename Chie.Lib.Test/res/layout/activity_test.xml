@@ -36,6 +36,13 @@
 		android:id="@+id/button"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:onClick="normalCheckDialog"
+		android:text="チェックボックス付きダイアログ" />
+
+	<Button
+		android:id="@+id/button"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
 		android:onClick="showCustomDialog"
 		android:text="カスタムダイアログ" />
 

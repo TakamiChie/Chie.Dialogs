@@ -51,6 +51,11 @@ public class Dialogs {
     public static final String ALERT_MESSAGE = "messagestr";
 
     /**
+     * ダイアログに表示する追加文字列を指定します(String)。 現時点では内部的にのみ用いられています。
+     */
+    static final String ALERT_APPENDMESSAGE = "appendmessage";
+
+    /**
      * ダイアログに表示するメッセージ配列を指定します(String[])。
      * この値を指定するとダイアログは複数項目からどれか一つを選ぶ形式のダイアログを表示します。
      * 任意のビューを表示させたいときは値を指定しないでください。
@@ -96,6 +101,12 @@ public class Dialogs {
      * 複数選択ダイアログの場合、そこで選択した項目の文字列が、 単一行入力ダイアログの場合、そこで入力した文字列が格納されています(String)。
      */
     public static final String PARAMS_INPUTSTR = "inputstr";
+
+    /**
+     * {@link #showCheckDialog(FragmentManager, String, String, String, Bundle, DialogCallback)}
+     * において、チェックボックスの状態が格納されています(boolean)。
+     */
+    public static final String PARAMS_CHECKED = "checked";
 
     /**
      * ダイアログのIDです(int)。
@@ -184,7 +195,7 @@ public class Dialogs {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
-	if(!args.containsKey(ALERT_BUTTONS)){
+	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE);
 	}
 	showDialog(manager, args, callback, null);
@@ -226,7 +237,7 @@ public class Dialogs {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
-	if(!args.containsKey(ALERT_BUTTONS)){
+	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
 	showDialog(manager, args, callback, null);
@@ -310,7 +321,7 @@ public class Dialogs {
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
 	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
-	if(!args.containsKey(ALERT_BUTTONS)){
+	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
 	showDialog(manager, args, callback, null);
@@ -335,6 +346,58 @@ public class Dialogs {
     }
 
     /**
+     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     *
+     * @param manager
+     *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param checkmessage
+     *            チェックボックスに表示するメッセージ
+     * @param params
+     *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showCheckDialog(FragmentManager manager,
+	    String title, String message, String checkmessage, Bundle params,
+	    DialogCallback callback) {
+	Bundle args = params != null ? new Bundle(params) : new Bundle();
+	args.putString(ALERT_TITLE, title);
+	args.putString(ALERT_MESSAGE, message);
+	args.putString(ALERT_APPENDMESSAGE, checkmessage);
+	args.putInt(ALERT_VIEWID, R.layout.checkdialog);
+	if (!args.containsKey(ALERT_BUTTONS)) {
+	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	}
+	showDialog(manager, args, callback, null);
+    }
+
+    /**
+     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     *
+     * @param manager
+     *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param checkmessage
+     *            チェックボックスに表示するメッセージ
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showCheckDialog(FragmentManager manager,
+	    String title, String message, String checkmessage,
+	    DialogCallback callback) {
+	showCheckDialog(manager, title, message, checkmessage, null, callback);
+    }
+
+    /**
      * 独自ビューを表示するダイアログを表示します。
      *
      * @param manager
@@ -352,7 +415,7 @@ public class Dialogs {
 	    String title, View view, Bundle params, DialogCallback callback) {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
-	if(!args.containsKey(ALERT_BUTTONS)){
+	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
 	showDialog(manager, args, callback, view);
@@ -396,7 +459,7 @@ public class Dialogs {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
-	if(!args.containsKey(ALERT_BUTTONS)){
+	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE);
 	}
 	showDialog(transaction, args, callback, null);
@@ -438,7 +501,7 @@ public class Dialogs {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
-	if(!args.containsKey(ALERT_BUTTONS)){
+	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
 	showDialog(transaction, args, callback, null);
@@ -522,7 +585,7 @@ public class Dialogs {
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
 	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
-	if(!args.containsKey(ALERT_BUTTONS)){
+	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
 	showDialog(transaction, args, callback, null);
@@ -547,6 +610,59 @@ public class Dialogs {
     }
 
     /**
+     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     *
+     * @param transaction
+     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param checkmessage
+     *            チェックボックスに表示するメッセージ
+     * @param params
+     *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showCheckDialog(FragmentTransaction transaction,
+	    String title, String message, String checkmessage, Bundle params,
+	    DialogCallback callback) {
+	Bundle args = params != null ? new Bundle(params) : new Bundle();
+	args.putString(ALERT_TITLE, title);
+	args.putString(ALERT_MESSAGE, message);
+	args.putString(ALERT_APPENDMESSAGE, checkmessage);
+	args.putInt(ALERT_VIEWID, R.layout.checkdialog);
+	if (!args.containsKey(ALERT_BUTTONS)) {
+	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
+	}
+	showDialog(transaction, args, callback, null);
+    }
+
+    /**
+     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     *
+     * @param transaction
+     *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+     * @param title
+     *            タイトルとして表示する文字列
+     * @param message
+     *            メッセージとして表示する文字列を指定します。
+     * @param checkmessage
+     *            チェックボックスに表示するメッセージ
+     * @param callback
+     *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
+     */
+    public static final void showCheckDialog(FragmentTransaction transaction,
+	    String title, String message, String checkmessage,
+	    DialogCallback callback) {
+	showCheckDialog(transaction, title, message, checkmessage, null,
+		callback);
+    }
+
+    /**
      * 独自ビューを表示するダイアログを表示します。
      *
      * @param transaction
@@ -564,7 +680,7 @@ public class Dialogs {
 	    String title, View view, Bundle params, DialogCallback callback) {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
-	if(!args.containsKey(ALERT_BUTTONS)){
+	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
 	showDialog(transaction, args, callback, null);
@@ -601,8 +717,8 @@ public class Dialogs {
      * @param v
      *            ダイアログに表示されるビューを指定します。
      */
-    public static final void showDialog(FragmentManager manager,
-	    Bundle params, DialogCallback callback, View v) {
+    public static final void showDialog(FragmentManager manager, Bundle params,
+	    DialogCallback callback, View v) {
 	String tagStr = String.valueOf(tag++);
 
 	// staticなメモリにデータを保存

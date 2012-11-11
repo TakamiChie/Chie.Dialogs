@@ -38,6 +38,11 @@ public class TestActivity extends FragmentActivity implements DialogCallback {
 		getParam(4), this);
     }
 
+    public void normalCheckDialog(View v) {
+	Dialogs.showCheckDialog(getSupportFragmentManager(), "タイトル", "メッセージ",
+		"このメッセージを表示しない", getParam(5), this);
+    }
+
     public void showCustomDialog(View v) {
 	View view = getLayoutInflater().inflate(R.layout.testview, null);
 	Button button = (Button) view.findViewById(R.id.button);
@@ -49,7 +54,7 @@ public class TestActivity extends FragmentActivity implements DialogCallback {
 	    }
 	});
 	Dialogs.showCustomDialog(getSupportFragmentManager(), "タイトル", view,
-		getParam(5), this);
+		getParam(6), this);
     }
 
     private Bundle getParam(int i) {
@@ -84,7 +89,13 @@ public class TestActivity extends FragmentActivity implements DialogCallback {
 	    builder.append("入力/選択文字列:"
 		    + params.getString(Dialogs.PARAMS_INPUTSTR) + "\n");
 	}
-	builder.append(String.format("ダイアログID：%d\n", params.getInt(Dialogs.PARAMS_ID)));
+	if (params.containsKey(Dialogs.PARAMS_CHECKED)) {
+	    builder.append("チェック:"
+		    + (params.getBoolean(Dialogs.PARAMS_CHECKED) ? "あり" : "なし")
+		    + "\n");
+	}
+	builder.append(String.format("ダイアログID：%d\n",
+		params.getInt(Dialogs.PARAMS_ID)));
 
 	Toast.makeText(this, builder.substring(0, builder.length() - 1),
 		Toast.LENGTH_LONG).show();
