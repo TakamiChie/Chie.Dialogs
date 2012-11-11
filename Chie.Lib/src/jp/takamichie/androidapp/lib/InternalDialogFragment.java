@@ -89,6 +89,7 @@ public final class InternalDialogFragment extends DialogFragment implements
 		    android.R.id.input);
 	    params.putString(Dialogs.PARAMS_INPUTSTR, ed.getText().toString());
 	}
+	params.putInt(Dialogs.PARAMS_ID, args.getInt(Dialogs.ALERT_ID));
 	Dialogs.DialogCallback callback = Dialogs.dialogData.get(getTag()).callback;
 	if (callback != null) {
 	    callback.onDialogClosed(this, params);
@@ -97,13 +98,15 @@ public final class InternalDialogFragment extends DialogFragment implements
 
     @Override
     public void onCancel(DialogInterface dialog) {
+	Bundle args = getArguments();
+	Bundle params = new Bundle();
 	// キャンセルをコールバック
-	Bundle args = new Bundle();
-	args.putInt(Dialogs.PARAMS_PRESSBUTTON, Dialogs.CANCEL);
+	params.putInt(Dialogs.PARAMS_PRESSBUTTON, Dialogs.CANCEL);
+	params.putInt(Dialogs.PARAMS_ID, args.getInt(Dialogs.ALERT_ID));
 
 	Dialogs.DialogCallback callback = Dialogs.dialogData.get(getTag()).callback;
 	if (callback != null) {
-	    callback.onDialogClosed(this, args);
+	    callback.onDialogClosed(this, params);
 	}
 	super.onCancel(dialog);
     }

@@ -83,6 +83,11 @@ public class Dialogs {
     public static final String ALERT_NEUCAPTION = "neu-caption";
 
     /**
+     * ダイアログのIDです。値はダイアログのコールバックメソッドの引数に引き渡されます(int)。
+     */
+    public static final String ALERT_ID = "id";
+
+    /**
      * アラートダイアログに指定するビューのIDです(int)。 現時点では内部的にのみ利用されます。
      */
     static final String ALERT_VIEWID = "viewid";
@@ -91,6 +96,11 @@ public class Dialogs {
      * 複数選択ダイアログの場合、そこで選択した項目の文字列が、 単一行入力ダイアログの場合、そこで入力した文字列が格納されています(String)。
      */
     public static final String PARAMS_INPUTSTR = "inputstr";
+
+    /**
+     * ダイアログのIDです(int)。
+     */
+    public static final String PARAMS_ID = ALERT_ID;
 
     /**
      * ダイアログクローズ時、押下されたボタンを示します(int)。
