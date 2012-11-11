@@ -24,21 +24,35 @@ public final class InternalDialogFragment extends DialogFragment implements
 	View appendView = Dialogs.dialogData.get(getTag()).view;
 	AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
 	// タイトル設定
-	dialog.setTitle(args.getString(Dialogs.ALERT_TITLE));
+	if (args.containsKey(Dialogs.ALERT_TITLEID)) {
+	    dialog.setTitle(args.getInt(Dialogs.ALERT_TITLEID));
+	} else {
+	    dialog.setTitle(args.getString(Dialogs.ALERT_TITLE));
+	}
 	// メッセージ設定
 	if (args.containsKey(Dialogs.ALERT_VIEWID)) {
 	    int viewId = args.getInt(Dialogs.ALERT_VIEWID);
-	    dialog.setMessage(args.getString(Dialogs.ALERT_MESSAGE));
 	    View v = getActivity().getLayoutInflater().inflate(viewId, null);
 	    // ビューごとの個別処理
-	    if(viewId == R.layout.checkdialog){
+	    if (viewId == R.layout.checkdialog) {
 		// チェックボックスの文字列指定
-		CheckBox checkbox = (CheckBox) v.findViewById(android.R.id.checkbox);
-		checkbox.setText(args.getString(Dialogs.ALERT_APPENDMESSAGE));
+		CheckBox checkbox = (CheckBox) v
+			.findViewById(android.R.id.checkbox);
+		if (args.containsKey(Dialogs.ALERT_APPENDMESSAGEID)) {
+		    checkbox.setText(args.getInt(Dialogs.ALERT_APPENDMESSAGEID));
+		} else {
+		    checkbox.setText(args
+			    .getString(Dialogs.ALERT_APPENDMESSAGE));
+		}
 	    }
 	    dialog.setView(v);
+	}
+	if (args.containsKey(Dialogs.ALERT_MESSAGEID)) {
+	    dialog.setMessage(args.getInt(Dialogs.ALERT_MESSAGEID));
 	} else if (args.containsKey(Dialogs.ALERT_MESSAGE)) {
 	    dialog.setMessage(args.getString(Dialogs.ALERT_MESSAGE));
+	} else if (args.containsKey(Dialogs.ALERT_MESSAGEARRAYID)) {
+	    dialog.setItems(args.getInt(Dialogs.ALERT_MESSAGEARRAYID), this);
 	} else if (args.containsKey(Dialogs.ALERT_MESSAGEARRAY)) {
 	    dialog.setItems(args.getStringArray(Dialogs.ALERT_MESSAGEARRAY),
 		    this);
@@ -85,8 +99,13 @@ public final class InternalDialogFragment extends DialogFragment implements
 	    break;
 	default:
 	    // それ以外の項目
-	    String[] candidate = args
-		    .getStringArray(Dialogs.ALERT_MESSAGEARRAY);
+	    String[] candidate;
+	    if (args.containsKey(Dialogs.ALERT_MESSAGEARRAYID)) {
+		candidate = getResources().getStringArray(
+			args.getInt(Dialogs.ALERT_MESSAGEARRAYID));
+	    } else {
+		candidate = args.getStringArray(Dialogs.ALERT_MESSAGEARRAY);
+	    }
 	    params.putString(Dialogs.PARAMS_INPUTSTR, candidate[which]);
 	    break;
 	}

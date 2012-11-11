@@ -23,27 +23,72 @@ public class TestActivity extends FragmentActivity implements DialogCallback {
 		getParam(1), this);
     }
 
+    public void normalAlertDialogID(View v) {
+	Dialogs.showAlertDialog(getSupportFragmentManager(),
+		R.string.caption_title, R.string.caption_message, getParam(2),
+		this);
+    }
+
     public void simpleAlertDialog(View v) {
 	Dialogs.showSimpleDialog(getSupportFragmentManager(), "タイトル", "メッセージ",
-		getParam(2), this);
+		getParam(3), this);
+    }
+
+    public void simpleAlertDialogID(View v) {
+	Dialogs.showSimpleDialog(getSupportFragmentManager(),
+		R.string.caption_title, R.string.caption_message, getParam(4),
+		this);
     }
 
     public void normalChoiceDialog(View v) {
 	Dialogs.showChoiceDialog(getSupportFragmentManager(), "タイトル",
-		getParam(3), this, "候補1", "候補2", "候補3");
+		getParam(5), this, "候補1", "候補2", "候補3");
+    }
+
+    public void normalChoiceDialogID(View v) {
+	Dialogs.showChoiceDialog(getSupportFragmentManager(),
+		R.string.caption_title, getParam(6), this, R.array.itemlist);
     }
 
     public void normalInputDialog(View v) {
 	Dialogs.showInputDialog(getSupportFragmentManager(), "タイトル", "メッセージ",
-		getParam(4), this);
+		getParam(7), this);
+    }
+
+    public void normalInputDialogID(View v) {
+	Dialogs.showInputDialog(getSupportFragmentManager(),
+		R.string.caption_title, R.string.caption_message, getParam(8),
+		this);
     }
 
     public void normalCheckDialog(View v) {
 	Dialogs.showCheckDialog(getSupportFragmentManager(), "タイトル", "メッセージ",
-		"このメッセージを表示しない", getParam(5), this);
+		getString(R.string.caption_nomoremessage), getParam(9), this);
+    }
+
+    public void normalCheckDialogID(View v) {
+	Dialogs.showCheckDialog(getSupportFragmentManager(),
+		R.string.caption_title, R.string.caption_message,
+		R.string.caption_nomoremessage, getParam(10), this);
     }
 
     public void showCustomDialog(View v) {
+	Dialogs.showCustomDialog(getSupportFragmentManager(), "タイトル",
+		getCustomView(), getParam(11), this);
+    }
+
+    public void showCustomDialogID(View v) {
+	Dialogs.showCustomDialog(getSupportFragmentManager(),
+		R.string.caption_title, getCustomView(), getParam(12), this);
+    }
+
+    private Bundle getParam(int i) {
+	Bundle params = new Bundle();
+	params.putInt(Dialogs.ALERT_ID, i);
+	return params;
+    }
+
+    private View getCustomView() {
 	View view = getLayoutInflater().inflate(R.layout.testview, null);
 	Button button = (Button) view.findViewById(R.id.button);
 	button.setOnClickListener(new View.OnClickListener() {
@@ -53,14 +98,7 @@ public class TestActivity extends FragmentActivity implements DialogCallback {
 			Toast.LENGTH_SHORT).show();
 	    }
 	});
-	Dialogs.showCustomDialog(getSupportFragmentManager(), "タイトル", view,
-		getParam(6), this);
-    }
-
-    private Bundle getParam(int i) {
-	Bundle params = new Bundle();
-	params.putInt(Dialogs.ALERT_ID, i);
-	return params;
+	return view;
     }
 
     @Override
