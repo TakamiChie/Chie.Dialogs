@@ -51,13 +51,15 @@ public class Dialogs {
 
     /**
      * ダイアログに表示するメッセージ文字列を指定します(String)。
-     * この値を指定すると、ダイアログは単一のメッセージを表示するダイアログとなります。 任意のビューを表示させたいときは値を指定しないでください。
+     * この値を指定すると、ダイアログは単一のメッセージを表示するダイアログとなります。
+     * 多肢選択式ダイアログを表示させたいときは値を指定しないでください。
      */
     public static final String ALERT_MESSAGE = "messagestr";
 
     /**
      * ダイアログに表示するメッセージ文字列のリソースIDを指定します(int)。
-     * この値を指定すると、ダイアログは単一のメッセージを表示するダイアログとなります。 任意のビューを表示させたいときは値を指定しないでください。
+     * この値を指定すると、ダイアログは単一のメッセージを表示するダイアログとなります。
+     * 多肢選択式ダイアログを表示させたいときは値を指定しないでください。
      */
     public static final String ALERT_MESSAGEID = "messageid";
 
@@ -553,8 +555,8 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
-     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     * チェックボックスのついたダイアログを表示します。 チェックボックスの値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
      *
      * @param manager
      *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
@@ -584,8 +586,8 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
-     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     * チェックボックスのついたダイアログを表示します。 チェックボックスの値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
      *
      * @param manager
      *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
@@ -605,8 +607,8 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
-     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     * チェックボックスのついたダイアログを表示します。 チェックボックスの値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
      *
      * @param manager
      *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
@@ -636,8 +638,8 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
-     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     * チェックボックスのついたダイアログを表示します。 チェックボックスの値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
      *
      * @param manager
      *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
@@ -653,7 +655,8 @@ public class Dialogs {
     public static final void showCheckDialog(FragmentManager manager,
 	    int titleid, int messageid, int checkmessageid,
 	    DialogCallback callback) {
-	showCheckDialog(manager, titleid, messageid, checkmessageid, null, callback);
+	showCheckDialog(manager, titleid, messageid, checkmessageid, null,
+		callback);
     }
 
     /**
@@ -989,7 +992,7 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
+     * 文字列入力が可能なダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
      * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
      *
      * @param transaction
@@ -1016,7 +1019,7 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
+     * 文字列入力が可能なダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
      * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
      *
      * @param transaction
@@ -1034,7 +1037,7 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
+     * 文字列入力が可能なダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
      * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
      *
      * @param transaction
@@ -1061,7 +1064,7 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
+     * 文字列入力が可能なダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
      * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
      *
      * @param transaction
@@ -1079,8 +1082,8 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
-     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     * チェックボックスのついたダイアログを表示します。 チェックボックスの値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
      *
      * @param transaction
      *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
@@ -1110,8 +1113,8 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
-     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     * チェックボックスのついたダイアログを表示します。 チェックボックスの値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
      *
      * @param transaction
      *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
@@ -1132,8 +1135,8 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
-     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     * チェックボックスのついたダイアログを表示します。 チェックボックスの値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
      *
      * @param transaction
      *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
@@ -1163,8 +1166,8 @@ public class Dialogs {
     }
 
     /**
-     * 標準的な入力式ダイアログを表示します。 入力された値はコールバックメソッドのパラメータ
-     * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
+     * チェックボックスのついたダイアログを表示します。 チェックボックスの値はコールバックメソッドのパラメータ
+     * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
      *
      * @param transaction
      *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
