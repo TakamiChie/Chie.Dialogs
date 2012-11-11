@@ -5,15 +5,17 @@ import jp.takamichie.androidapp.lib.Dialogs.DialogCallback;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class TestActivity extends FragmentActivity implements DialogCallback {
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+
+public class TestActivity extends SherlockFragmentActivity implements DialogCallback {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+	setTheme(com.actionbarsherlock.R.style.Theme_Sherlock);
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_test);
     }
