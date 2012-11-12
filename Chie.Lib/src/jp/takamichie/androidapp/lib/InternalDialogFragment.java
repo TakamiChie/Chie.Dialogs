@@ -1,5 +1,6 @@
 package jp.takamichie.androidapp.lib;
 
+import jp.takamichie.androidapp.lib.Dialogs.Result;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -125,6 +126,24 @@ public final class InternalDialogFragment extends DialogFragment implements
 	Dialogs.DialogCallback callback = Dialogs.dialogData.get(getTag()).callback;
 	if (callback != null) {
 	    callback.onDialogClosed(this, params);
+	    // Resultインターフェース処理
+	    if(callback instanceof Result){
+		Result result = (Result)callback;
+		switch (which) {
+		case DialogInterface.BUTTON_POSITIVE:
+		    result.onPositiveResult(this, params);
+		    break;
+		case DialogInterface.BUTTON_NEGATIVE:
+		    result.onNegativeResult(this, params);
+		    break;
+		case DialogInterface.BUTTON_NEUTRAL:
+		    result.onNeutralResult(this, params);
+		    break;
+		default:
+		    result.onSelectItems(this, params);
+		    break;
+		}
+	    }
 	}
     }
 
@@ -139,7 +158,12 @@ public final class InternalDialogFragment extends DialogFragment implements
 	Dialogs.DialogCallback callback = Dialogs.dialogData.get(getTag()).callback;
 	if (callback != null) {
 	    callback.onDialogClosed(this, params);
+	    // Resultインターフェース処理
+	    if(callback instanceof Result){
+		((Result)callback).onCancel(this, params);
+	    }
 	}
+
 	super.onCancel(dialog);
     }
 

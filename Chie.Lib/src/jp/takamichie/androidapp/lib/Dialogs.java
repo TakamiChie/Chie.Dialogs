@@ -188,7 +188,7 @@ public class Dialogs {
      */
     public interface DialogCallback {
 	/**
-	 * ダイアログの肯定ボタンが押されたときのコールバックメソッドです。
+	 * ダイアログが閉じたときのコールバックメソッドです。
 	 *
 	 * @param owner
 	 *            内部的に使用している{@link DialogFragment}オブジェクト。
@@ -200,6 +200,109 @@ public class Dialogs {
 	 *            </ul>
 	 */
 	void onDialogClosed(DialogFragment owner, Bundle params);
+    }
+
+    /**
+     * ダイアログ処理のコールバックインターフェースです。
+     */
+    public interface Result extends DialogCallback{
+	/**
+	 * ダイアログの肯定ボタンが押されたときのコールバックメソッドです。
+	 *
+	 * @param owner
+	 *            内部的に使用している{@link DialogFragment}オブジェクト。
+	 * @param params
+	 *            ダイアログの出力するパラメータ。次の値が格納されます。
+	 *            <ul>
+	 *            <li>{@link Dialogs#PARAMS_INPUTSTR}</li>
+	 *            <li>{@link Dialogs#PARAMS_PRESSBUTTON}</li>
+	 *            </ul>
+	 */
+	void onPositiveResult(DialogFragment owner, Bundle params);
+	/**
+	 * ダイアログの否定ボタンが押されたときのコールバックメソッドです。
+	 *
+	 * @param owner
+	 *            内部的に使用している{@link DialogFragment}オブジェクト。
+	 * @param params
+	 *            ダイアログの出力するパラメータ。次の値が格納されます。
+	 *            <ul>
+	 *            <li>{@link Dialogs#PARAMS_INPUTSTR}</li>
+	 *            <li>{@link Dialogs#PARAMS_PRESSBUTTON}</li>
+	 *            </ul>
+	 */
+	void onNegativeResult(DialogFragment owner, Bundle params);
+	/**
+	 * ダイアログの中立ボタンが押されたときのコールバックメソッドです。
+	 *
+	 * @param owner
+	 *            内部的に使用している{@link DialogFragment}オブジェクト。
+	 * @param params
+	 *            ダイアログの出力するパラメータ。次の値が格納されます。
+	 *            <ul>
+	 *            <li>{@link Dialogs#PARAMS_INPUTSTR}</li>
+	 *            <li>{@link Dialogs#PARAMS_PRESSBUTTON}</li>
+	 *            </ul>
+	 */
+	void onNeutralResult(DialogFragment owner, Bundle params);
+	/**
+	 * 多肢選択式のダイアログにおいて、項目が選択されダイアログが閉じたときのコールバックメソッドです。
+	 *
+	 * @param owner
+	 *            内部的に使用している{@link DialogFragment}オブジェクト。
+	 * @param params
+	 *            ダイアログの出力するパラメータ。次の値が格納されます。
+	 *            <ul>
+	 *            <li>{@link Dialogs#PARAMS_INPUTSTR}</li>
+	 *            <li>{@link Dialogs#PARAMS_PRESSBUTTON}</li>
+	 *            </ul>
+	 */
+	void onSelectItems(DialogFragment owner, Bundle params);
+	/**
+	 * ダイアログがキャンセルされたときのコールバックメソッドです。
+	 *
+	 * @param owner
+	 *            内部的に使用している{@link DialogFragment}オブジェクト。
+	 * @param params
+	 *            ダイアログの出力するパラメータ。次の値が格納されます。
+	 *            <ul>
+	 *            <li>{@link Dialogs#PARAMS_INPUTSTR}</li>
+	 *            <li>{@link Dialogs#PARAMS_PRESSBUTTON}</li>
+	 *            </ul>
+	 */
+	void onCancel(DialogFragment owner, Bundle params);
+
+    }
+
+    /**
+     * ダイアログ処理のコールバックインターフェースを実装したオブジェクトです
+     */
+    public static abstract class ResultReciever implements Result{
+
+	@Override
+	public void onDialogClosed(DialogFragment owner, Bundle params) {
+	}
+
+	@Override
+	public void onPositiveResult(DialogFragment owner, Bundle params) {
+	}
+
+	@Override
+	public void onNegativeResult(DialogFragment owner, Bundle params) {
+	}
+
+	@Override
+	public void onNeutralResult(DialogFragment owner, Bundle params) {
+	}
+
+	@Override
+	public void onSelectItems(DialogFragment owner, Bundle params) {
+	}
+
+	@Override
+	public void onCancel(DialogFragment owner, Bundle params) {
+	}
+
     }
 
     /**
