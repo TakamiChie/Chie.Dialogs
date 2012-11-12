@@ -35,6 +35,21 @@ public class Dialogs {
 	    + DIALOGBUTTON_NEGATIVE;
 
     /**
+     * ダイアログで肯定ボタンが押された際、{@link #PARAMS_PRESSBUTTON}に格納される値です。
+     */
+    public static final int BUTTON_POSITIVE = DialogInterface.BUTTON_POSITIVE;
+
+    /**
+     * ダイアログで否定ボタンが押された際、{@link #PARAMS_PRESSBUTTON}に格納される値です。
+     */
+    public static final int BUTTON_NEGATIVE = DialogInterface.BUTTON_NEGATIVE;
+
+    /**
+     * ダイアログで中立ボタンが押された際、{@link #PARAMS_PRESSBUTTON}に格納される値です。
+     */
+    public static final int BUTTON_NEUTRAL = DialogInterface.BUTTON_NEUTRAL;
+
+    /**
      * ダイアログがキャンセルされた際、{@link #PARAMS_PRESSBUTTON}に格納される値です。
      */
     public static final int CANCEL = 0x10;
@@ -156,11 +171,11 @@ public class Dialogs {
     /**
      * ダイアログクローズ時、押下されたボタンを示します(int)。
      * <dl>
-     * <dt>{@link DialogInterface#BUTTON_POSITIVE}</dr>
+     * <dt>{@link #BUTTON_POSITIVE}</dr>
      * <dd>ダイアログの肯定ボタンが押された</dd>
-     * <dt>{@link DialogInterface#BUTTON_NEUTRAL}</dr>
+     * <dt>{@link #BUTTON_NEUTRAL}</dr>
      * <dd>ダイアログの中立ボタンが押された</dd>
-     * <dt>{@link DialogInterface#BUTTON_NEGATIVE}</dr>
+     * <dt>{@link #BUTTON_NEGATIVE}</dr>
      * <dd>ダイアログの否定ボタンが押された</dd>
      * <dt>{@link #CANCEL}</dr>
      * <dd>ダイアログがキャンセルされた</dd>
