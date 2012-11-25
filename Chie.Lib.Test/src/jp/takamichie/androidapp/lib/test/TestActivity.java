@@ -1,7 +1,6 @@
 package jp.takamichie.androidapp.lib.test;
 
 import jp.takamichie.androidapp.lib.Dialogs;
-import jp.takamichie.androidapp.lib.Dialogs.DialogCallback;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -11,7 +10,7 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
-public class TestActivity extends SherlockFragmentActivity implements DialogCallback {
+public class TestActivity extends SherlockFragmentActivity implements Dialogs.DialogCallback {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
