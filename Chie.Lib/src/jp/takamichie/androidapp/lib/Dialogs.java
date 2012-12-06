@@ -158,6 +158,11 @@ public class Dialogs {
     public static final String PARAMS_INPUTSTR = "inputstr";
 
     /**
+     * 複数選択ダイアログの場合、そこで選択した項目の項目インデックスが格納されています(int)。
+     */
+    public static final String PARAMS_INPUTINDEX = "inputindex";
+
+    /**
      * {@link #showCheckDialog(FragmentManager, String, String, String, Bundle, DialogCallback)}
      * において、チェックボックスの状態が格納されています(boolean)。
      */

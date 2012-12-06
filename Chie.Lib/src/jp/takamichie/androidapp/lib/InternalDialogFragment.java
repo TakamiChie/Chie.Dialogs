@@ -108,6 +108,7 @@ public final class InternalDialogFragment extends DialogFragment implements
 		candidate = args.getStringArray(Dialogs.ALERT_MESSAGEARRAY);
 	    }
 	    params.putString(Dialogs.PARAMS_INPUTSTR, candidate[which]);
+	    params.putInt(Dialogs.PARAMS_INPUTINDEX, which);
 	    break;
 	}
 	// 入力の取得
