@@ -89,6 +89,11 @@ public class Dialogs {
     static final String ALERT_APPENDMESSAGEID = "appendmessageid";
 
     /**
+     * 単一行入力ダイアログにおいて、初期入力されている文字列を指定します(String)。
+     */
+    static final String ALERT_DEFAULTEDIT = "defaultedit";
+
+    /**
      * ダイアログに表示するメッセージ配列を指定します(String[])。
      * この値を指定するとダイアログは複数項目からどれか一つを選ぶ形式のダイアログを表示します。
      * 任意のビューを表示させたいときは値を指定しないでください。

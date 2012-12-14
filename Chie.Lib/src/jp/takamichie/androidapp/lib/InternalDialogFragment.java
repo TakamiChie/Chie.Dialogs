@@ -35,7 +35,13 @@ public final class InternalDialogFragment extends DialogFragment implements
 	    int viewId = args.getInt(Dialogs.ALERT_VIEWID);
 	    View v = getActivity().getLayoutInflater().inflate(viewId, null);
 	    // ビューごとの個別処理
-	    if (viewId == R.layout.checkdialog) {
+	    if (viewId == R.layout.inputdialog) {
+		// EditTextの文字列指定
+		EditText editText = (EditText) v.findViewById(android.R.id.edit);
+		if(args.containsKey(Dialogs.ALERT_DEFAULTEDIT)){
+		    editText.setText(args.getString(Dialogs.ALERT_DEFAULTEDIT));
+		}
+	    } else if (viewId == R.layout.checkdialog) {
 		// チェックボックスの文字列指定
 		CheckBox checkbox = (CheckBox) v
 			.findViewById(android.R.id.checkbox);
@@ -128,8 +134,8 @@ public final class InternalDialogFragment extends DialogFragment implements
 	if (callback != null) {
 	    callback.onDialogClosed(this, params);
 	    // Resultインターフェース処理
-	    if(callback instanceof Result){
-		Result result = (Result)callback;
+	    if (callback instanceof Result) {
+		Result result = (Result) callback;
 		switch (which) {
 		case DialogInterface.BUTTON_POSITIVE:
 		    result.onPositiveResult(this, params);
@@ -160,8 +166,8 @@ public final class InternalDialogFragment extends DialogFragment implements
 	if (callback != null) {
 	    callback.onDialogClosed(this, params);
 	    // Resultインターフェース処理
-	    if(callback instanceof Result){
-		((Result)callback).onCancel(this, params);
+	    if (callback instanceof Result) {
+		((Result) callback).onCancel(this, params);
 	    }
 	}
 
