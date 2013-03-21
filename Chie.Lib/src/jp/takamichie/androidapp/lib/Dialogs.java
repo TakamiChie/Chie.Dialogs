@@ -194,6 +194,15 @@ public class Dialogs {
     public static final String PARAMS_PRESSBUTTON = "pressbutton";
 
     /**
+     * 文字入力領域を持つダイアログを表示するためのビューIDです。
+     */
+    static final int VIEWID_INPUTDLG = 1;
+
+    /**
+     * チェックボックスを持つダイアログを表示するためのビューIDです。
+     */
+    static final int VIEWID_CHECKDLG = 2;
+    /**
      * ダイアログ処理のコールバックインターフェースです。
      */
     public interface DialogCallback {
@@ -612,7 +621,7 @@ public class Dialogs {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
+	args.putInt(ALERT_VIEWID, VIEWID_INPUTDLG);
 	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
@@ -657,7 +666,7 @@ public class Dialogs {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putInt(ALERT_TITLEID, titleid);
 	args.putInt(ALERT_MESSAGEID, messageid);
-	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
+	args.putInt(ALERT_VIEWID, VIEWID_INPUTDLG);
 	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
@@ -706,7 +715,7 @@ public class Dialogs {
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
 	args.putString(ALERT_APPENDMESSAGE, checkmessage);
-	args.putInt(ALERT_VIEWID, R.layout.checkdialog);
+	args.putInt(ALERT_VIEWID, VIEWID_CHECKDLG);
 	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
@@ -758,7 +767,7 @@ public class Dialogs {
 	args.putInt(ALERT_TITLEID, titleid);
 	args.putInt(ALERT_MESSAGEID, messageid);
 	args.putInt(ALERT_APPENDMESSAGEID, checkmessageid);
-	args.putInt(ALERT_VIEWID, R.layout.checkdialog);
+	args.putInt(ALERT_VIEWID, VIEWID_CHECKDLG);
 	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
@@ -1139,7 +1148,7 @@ public class Dialogs {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
-	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
+	args.putInt(ALERT_VIEWID, VIEWID_INPUTDLG);
 	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
@@ -1184,7 +1193,7 @@ public class Dialogs {
 	Bundle args = params != null ? new Bundle(params) : new Bundle();
 	args.putInt(ALERT_TITLEID, titleid);
 	args.putInt(ALERT_MESSAGEID, messageid);
-	args.putInt(ALERT_VIEWID, R.layout.inputdialog);
+	args.putInt(ALERT_VIEWID, VIEWID_INPUTDLG);
 	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
@@ -1233,7 +1242,7 @@ public class Dialogs {
 	args.putString(ALERT_TITLE, title);
 	args.putString(ALERT_MESSAGE, message);
 	args.putString(ALERT_APPENDMESSAGE, checkmessage);
-	args.putInt(ALERT_VIEWID, R.layout.checkdialog);
+	args.putInt(ALERT_VIEWID, VIEWID_CHECKDLG);
 	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}
@@ -1286,7 +1295,7 @@ public class Dialogs {
 	args.putInt(ALERT_TITLEID, titleid);
 	args.putInt(ALERT_MESSAGEID, messageid);
 	args.putInt(ALERT_APPENDMESSAGEID, checkmessageid);
-	args.putInt(ALERT_VIEWID, R.layout.checkdialog);
+	args.putInt(ALERT_VIEWID, VIEWID_CHECKDLG);
 	if (!args.containsKey(ALERT_BUTTONS)) {
 	    args.putInt(ALERT_BUTTONS, DIALOGBUTTON_POSITIVE_NEGATIVE);
 	}

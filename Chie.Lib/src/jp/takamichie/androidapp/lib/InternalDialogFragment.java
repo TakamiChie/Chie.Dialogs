@@ -7,9 +7,12 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.text.InputType;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 /**
  * 内部的に利用されるダイアログ表示フラグメントです。 {@link Dialogs}
@@ -33,26 +36,36 @@ public final class InternalDialogFragment extends DialogFragment implements
 	// メッセージ設定
 	if (args.containsKey(Dialogs.ALERT_VIEWID)) {
 	    int viewId = args.getInt(Dialogs.ALERT_VIEWID);
-	    View v = getActivity().getLayoutInflater().inflate(viewId, null);
+	    LinearLayout layout = new LinearLayout(getActivity());
+	    layout.setOrientation(LinearLayout.VERTICAL);
 	    // ビューごとの個別処理
-	    if (viewId == R.layout.inputdialog) {
+	    if (viewId == Dialogs.VIEWID_INPUTDLG) {
 		// EditTextの文字列指定
-		EditText editText = (EditText) v.findViewById(android.R.id.edit);
-		if(args.containsKey(Dialogs.ALERT_DEFAULTEDIT)){
+		EditText editText = new EditText(getActivity());
+		editText.setEms(10);
+		editText.setId(android.R.id.input);
+		editText.setLayoutParams(new LayoutParams(
+			LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		editText.setInputType(InputType.TYPE_CLASS_TEXT);
+		if (args.containsKey(Dialogs.ALERT_DEFAULTEDIT)) {
 		    editText.setText(args.getString(Dialogs.ALERT_DEFAULTEDIT));
 		}
-	    } else if (viewId == R.layout.checkdialog) {
+		layout.addView(editText);
+	    } else if (viewId == Dialogs.VIEWID_CHECKDLG) {
 		// チェックボックスの文字列指定
-		CheckBox checkbox = (CheckBox) v
-			.findViewById(android.R.id.checkbox);
+		CheckBox checkbox = new CheckBox(getActivity());
+		checkbox.setId(android.R.id.checkbox);
+		checkbox.setLayoutParams(new LayoutParams(
+			LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		if (args.containsKey(Dialogs.ALERT_APPENDMESSAGEID)) {
 		    checkbox.setText(args.getInt(Dialogs.ALERT_APPENDMESSAGEID));
 		} else {
 		    checkbox.setText(args
 			    .getString(Dialogs.ALERT_APPENDMESSAGE));
 		}
+		layout.addView(checkbox);
 	    }
-	    dialog.setView(v);
+	    dialog.setView(layout);
 	}
 	if (args.containsKey(Dialogs.ALERT_MESSAGEID)) {
 	    dialog.setMessage(args.getInt(Dialogs.ALERT_MESSAGEID));
