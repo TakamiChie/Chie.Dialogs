@@ -1,6 +1,7 @@
-package jp.takamichie.androidapp.lib.test;
+package jp.takamichie.androidapps.lib.dialogs.test;
 
-import jp.takamichie.androidapp.lib.Dialogs;
+import jp.takamichie.androidapp.lib.test.R;
+import jp.takamichie.androidapps.libs.dialogs.Dialogs;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
