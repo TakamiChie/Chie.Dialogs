@@ -1,6 +1,6 @@
-package jp.takamichie.androidapp.lib;
+package jp.takamichie.androidapps.libs.dialogs;
 
-import jp.takamichie.androidapp.lib.Dialogs.Result;
+import jp.takamichie.androidapps.libs.dialogs.Dialogs.Result;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;

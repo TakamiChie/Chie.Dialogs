@@ -1,4 +1,4 @@
-package jp.takamichie.androidapp.lib;
+package jp.takamichie.androidapps.libs.dialogs;
 
 import java.util.HashMap;
 
