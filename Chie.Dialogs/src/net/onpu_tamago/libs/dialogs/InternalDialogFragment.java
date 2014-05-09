@@ -35,7 +35,7 @@ public final class InternalDialogFragment extends DialogFragment implements
 		}
 	} else {
 		String str = args.getString(Dialogs.ALERT_TITLE);
-		if("".equals(str)){
+		if(!"".equals(str)){
 			dialog.setTitle(str);
 		}
 	}
