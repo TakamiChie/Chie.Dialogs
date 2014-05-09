@@ -29,9 +29,15 @@ public final class InternalDialogFragment extends DialogFragment implements
 	AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
 	// タイトル設定
 	if (args.containsKey(Dialogs.ALERT_TITLEID)) {
-	    dialog.setTitle(args.getInt(Dialogs.ALERT_TITLEID));
+		int id = args.getInt(Dialogs.ALERT_TITLEID);
+		if(id != 0){
+			dialog.setTitle(id);
+		}
 	} else {
-	    dialog.setTitle(args.getString(Dialogs.ALERT_TITLE));
+		String str = args.getString(Dialogs.ALERT_TITLE);
+		if("".equals(str)){
+			dialog.setTitle(str);
+		}
 	}
 	// メッセージ設定
 	if (args.containsKey(Dialogs.ALERT_VIEWID)) {

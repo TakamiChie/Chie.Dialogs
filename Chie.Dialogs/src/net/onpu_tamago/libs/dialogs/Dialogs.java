@@ -362,13 +362,13 @@ public class Dialogs {
 	 * ボタンがOKのみのシンプルなアラートダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -387,9 +387,9 @@ public class Dialogs {
 	 * ボタンがOKのみのシンプルなアラートダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param callback
@@ -404,13 +404,13 @@ public class Dialogs {
 	 * ボタンがOKのみのシンプルなアラートダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -429,11 +429,11 @@ public class Dialogs {
 	 * ボタンがOKのみのシンプルなアラートダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -446,13 +446,13 @@ public class Dialogs {
 	 * 標準的なアラートダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -471,9 +471,9 @@ public class Dialogs {
 	 * 標準的なアラートダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param callback
@@ -488,13 +488,13 @@ public class Dialogs {
 	 * 標準的なアラートダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -513,11 +513,11 @@ public class Dialogs {
 	 * 標準的なアラートダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -530,15 +530,15 @@ public class Dialogs {
 	 * 標準的な多肢選択式ダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 * @param choices
-	 *            ダイアログに表示される選択肢
+	 *            ダイアログに表示される選択肢を指定します。
 	 */
 	public static final void showChoiceDialog(FragmentManager manager,
 			String title, Bundle params, DialogCallback callback,
@@ -553,13 +553,13 @@ public class Dialogs {
 	 * 標準的な多肢選択式ダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 * @param choices
-	 *            ダイアログに表示される選択肢
+	 *            ダイアログに表示される選択肢を指定します。
 	 */
 	public static final void showChoiceDialog(FragmentManager manager,
 			String title, DialogCallback callback, String... choices) {
@@ -570,15 +570,15 @@ public class Dialogs {
 	 * 標準的な多肢選択式ダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 * @param choiceslistid
-	 *            ダイアログに表示される選択肢を示すリソースID
+	 *            ダイアログに表示される選択肢を示すリソースIDを指定します。
 	 */
 	public static final void showChoiceDialog(FragmentManager manager,
 			int titleid, Bundle params, DialogCallback callback,
@@ -593,13 +593,13 @@ public class Dialogs {
 	 * 標準的な多肢選択式ダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 * @param choiceslistid
-	 *            ダイアログに表示される選択肢を示すリソースID
+	 *            ダイアログに表示される選択肢を示すリソースIDを指定します。
 	 */
 	public static final void showChoiceDialog(FragmentManager manager,
 			int titleid, DialogCallback callback, int choiceslistid) {
@@ -611,13 +611,13 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -638,9 +638,9 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param callback
@@ -656,13 +656,13 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -683,11 +683,11 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -701,15 +701,15 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param checkmessage
-	 *            チェックボックスに表示するメッセージ
+	 *            チェックボックスに表示するメッセージを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -732,13 +732,13 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param checkmessage
-	 *            チェックボックスに表示するメッセージ
+	 *            チェックボックスに表示するメッセージを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -753,15 +753,15 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param checkmessageid
-	 *            チェックボックスに表示するメッセージのリソースID
+	 *            チェックボックスに表示するメッセージのリソースIDを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -784,13 +784,13 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param checkmessageid
-	 *            チェックボックスに表示するメッセージのリソースID
+	 *            チェックボックスに表示するメッセージのリソースIDを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -805,13 +805,13 @@ public class Dialogs {
 	 * 独自ビューを表示するダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param view
 	 *            表示するビューオブジェクトを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -829,9 +829,9 @@ public class Dialogs {
 	 * 独自ビューを表示するダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param view
 	 *            表示するビューオブジェクトを指定します。
 	 * @param callback
@@ -846,13 +846,13 @@ public class Dialogs {
 	 * 独自ビューを表示するダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param view
 	 *            表示するビューオブジェクトを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -870,9 +870,9 @@ public class Dialogs {
 	 * 独自ビューを表示するダイアログを表示します。
 	 * 
 	 * @param manager
-	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentManager}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param view
 	 *            表示するビューオブジェクトを指定します。
 	 * @param callback
@@ -889,13 +889,13 @@ public class Dialogs {
 	 * ボタンがOKのみのシンプルなアラートダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -914,9 +914,9 @@ public class Dialogs {
 	 * ボタンがOKのみのシンプルなアラートダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param callback
@@ -931,13 +931,13 @@ public class Dialogs {
 	 * ボタンがOKのみのシンプルなアラートダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -956,11 +956,11 @@ public class Dialogs {
 	 * ボタンがOKのみのシンプルなアラートダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -973,13 +973,13 @@ public class Dialogs {
 	 * 標準的なアラートダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -998,9 +998,9 @@ public class Dialogs {
 	 * 標準的なアラートダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param callback
@@ -1015,13 +1015,13 @@ public class Dialogs {
 	 * 標準的なアラートダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -1040,11 +1040,11 @@ public class Dialogs {
 	 * 標準的なアラートダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -1057,15 +1057,15 @@ public class Dialogs {
 	 * 標準的な多肢選択式ダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 * @param choices
-	 *            ダイアログに表示される選択肢
+	 *            ダイアログに表示される選択肢を指定します。
 	 */
 	public static final void showChoiceDialog(FragmentTransaction transaction,
 			String title, Bundle params, DialogCallback callback,
@@ -1080,13 +1080,13 @@ public class Dialogs {
 	 * 標準的な多肢選択式ダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 * @param choices
-	 *            ダイアログに表示される選択肢
+	 *            ダイアログに表示される選択肢を指定します。
 	 */
 	public static final void showChoiceDialog(FragmentTransaction transaction,
 			String title, DialogCallback callback, String... choices) {
@@ -1097,15 +1097,15 @@ public class Dialogs {
 	 * 標準的な多肢選択式ダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 * @param choiceslistid
-	 *            ダイアログに表示される選択肢を示すリソースID
+	 *            ダイアログに表示される選択肢を示すリソースIDを指定します。
 	 */
 	public static final void showChoiceDialog(FragmentTransaction transaction,
 			int titleid, Bundle params, DialogCallback callback,
@@ -1120,13 +1120,13 @@ public class Dialogs {
 	 * 標準的な多肢選択式ダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 * @param choiceslistid
-	 *            ダイアログに表示される選択肢を示すリソースID
+	 *            ダイアログに表示される選択肢を示すリソースIDを指定します。
 	 */
 	public static final void showChoiceDialog(FragmentTransaction transaction,
 			int titleid, DialogCallback callback, int choiceslistid) {
@@ -1138,13 +1138,13 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -1165,9 +1165,9 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param callback
@@ -1183,13 +1183,13 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -1210,11 +1210,11 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_INPUTSTR}にて取得可能です。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -1228,15 +1228,15 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクトを指定します。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param checkmessage
-	 *            チェックボックスに表示するメッセージ
+	 *            チェックボックスに表示するメッセージを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -1259,13 +1259,13 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param message
 	 *            メッセージとして表示する文字列を指定します。
 	 * @param checkmessage
-	 *            チェックボックスに表示するメッセージ
+	 *            チェックボックスに表示するメッセージを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -1281,15 +1281,15 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param checkmessageid
-	 *            チェックボックスに表示するメッセージのリソースID
+	 *            チェックボックスに表示するメッセージのリソースIDを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -1312,13 +1312,13 @@ public class Dialogs {
 	 * {@link Dialogs#PARAMS_CHECKED}にて取得可能です。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param messageid
-	 *            メッセージとして表示する文字列のリソースID
+	 *            メッセージとして表示する文字列のリソースIDを指定します。
 	 * @param checkmessageid
-	 *            チェックボックスに表示するメッセージのリソースID
+	 *            チェックボックスに表示するメッセージのリソースIDを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -1333,13 +1333,13 @@ public class Dialogs {
 	 * 独自ビューを表示するダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param view
 	 *            表示するビューオブジェクトを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -1357,9 +1357,9 @@ public class Dialogs {
 	 * 独自ビューを表示するダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param title
-	 *            タイトルとして表示する文字列
+	 *            タイトルとして表示する文字列を指定します。タイトルが不要な場合、""を指定します。
 	 * @param view
 	 *            表示するビューオブジェクトを指定します。
 	 * @param callback
@@ -1374,13 +1374,13 @@ public class Dialogs {
 	 * 独自ビューを表示するダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param view
 	 *            表示するビューオブジェクトを指定します。
 	 * @param params
-	 *            その他追加パラメータを格納した{@link Bundle}オブジェクト
+	 *            その他追加パラメータを格納した{@link Bundle}オブジェクトを指定します。
 	 * @param callback
 	 *            ダイアログがクローズされた際にコールバックされる{@link DialogCallback}オブジェクトを指定します。
 	 */
@@ -1398,9 +1398,9 @@ public class Dialogs {
 	 * 独自ビューを表示するダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param titleid
-	 *            タイトルとして表示する文字列のリソースID
+	 *            タイトルとして表示する文字列のリソースIDを指定します。タイトルが不要な場合、0を指定します。
 	 * @param view
 	 *            表示するビューオブジェクトを指定します。
 	 * @param callback
@@ -1417,7 +1417,7 @@ public class Dialogs {
 	 * アラートダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param params
 	 *            ダイアログのパラメータを指定します。
 	 * @param callback
@@ -1441,7 +1441,7 @@ public class Dialogs {
 	 * アラートダイアログを表示します。
 	 * 
 	 * @param transaction
-	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト
+	 *            ダイアログの表示に用いる{@link FragmentTransaction}オブジェクト。
 	 * @param params
 	 *            ダイアログのパラメータを指定します。
 	 * @param callback
